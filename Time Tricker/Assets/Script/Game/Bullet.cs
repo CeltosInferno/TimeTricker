@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : TimeEntity
 {
     public float speed;
     public float lifetime;
@@ -17,13 +17,13 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DestroyProjectile", (float)lifetime * Time.deltaTime / Time.unscaledDeltaTime);
+        Invoke("DestroyProjectile", (float)lifetime * m_timeScale *Time.deltaTime / Time.unscaledDeltaTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.unscaledDeltaTime);
+        transform.Translate(Vector2.right * speed * m_timeScale * Time.unscaledDeltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,8 +38,9 @@ public class Bullet : MonoBehaviour
 
             if (LimitApplicationForce(enemyGameObject))
             {
-                enemyGameObject.GetComponent<Rigidbody2D>().AddForce(referentiel.GetComponent<Transform>().transform.up * forceImpactY, ForceMode2D.Impulse);
-                enemyGameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Transform>().transform.right * forceImpactX, ForceMode2D.Impulse);
+                float forceCoef = Mathf.Sqrt(m_timeScale);
+                enemyGameObject.GetComponent<Rigidbody2D>().AddForce(referentiel.GetComponent<Transform>().transform.up * forceCoef * forceImpactY, ForceMode2D.Impulse);
+                enemyGameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Transform>().transform.right * forceCoef * forceImpactX, ForceMode2D.Impulse);
             } 
         }
 
