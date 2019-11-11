@@ -9,12 +9,17 @@ public class TimeController : MonoBehaviour
     public float SlowValue = 0.5f;
     public float SpeedValue = 2f;
 
+    //value of the energy bars
     public float totalPower = 300f;
+    //cost to activate a power
     public float activatePowerCost = 15f;
+    //cost of the power for each second
     public float costPerSeconds = 10f;
 
+    //the sprite and script of the energy bars
     public EnergyBars energyBars;
 
+    //current energy value (half of the totalPower)
     float currentEnergy;
 
     bool isSlowingDowm = false;
@@ -34,17 +39,29 @@ public class TimeController : MonoBehaviour
         energyBars.setSize(currentEnergy / totalPower);
     }
 
+    /*
+     * Called once per frame to adjust the energy bars when
+     * a power is used
+     * When the bar is empty the powers are disactivated
+     */
     void CalculateEnergy()
     {
         float cost = costPerSeconds * Time.deltaTime;
-        if (isSlowingDowm) currentEnergy = Mathf.Max(0f, currentEnergy - cost);
-        else if (isSpeedingUp) currentEnergy = Mathf.Min(totalPower, currentEnergy + cost);
+        if (isSlowingDowm) { 
+            currentEnergy = Mathf.Max(0f, currentEnergy - cost);
+        }
+        else if (isSpeedingUp) { 
+            currentEnergy = Mathf.Min(totalPower, currentEnergy + cost);
+        }
         if (currentEnergy <= 0f || currentEnergy >= totalPower)
         {
             disactivatePower();
         }
     }
-    
+
+    /*
+     * Should called when disactivating a power
+     */
     void disactivatePower()
     {
         TimeManager.globalTimeMultiplier = 1f;
@@ -52,6 +69,12 @@ public class TimeController : MonoBehaviour
         isSlowingDowm = false;
     }
 
+    /*
+     * Should called when acivating a power, 
+     * does not verify if it is allowed
+     * speedUp = true -> acceleration
+     * speedUp = false -> acceleration
+     */
     void activatePower(bool speedUp)
     {
         if(speedUp)
@@ -70,23 +93,26 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    /*
+     * Calls the powers when a key is pressed
+     */
     void InputGestion()
     {
-
+        //speed up butten
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (isSpeedingUp) disactivatePower();
             else if (currentEnergy < totalPower - activatePowerCost)
                 activatePower(true);
         }
-        //speed up button
+        //slow down button
         else if (Input.GetKeyDown(KeyCode.E))
         {
             if (isSlowingDowm) disactivatePower();
             else if (currentEnergy > 0 + activatePowerCost)
                 activatePower(false);
         }
-        //clear state
+        //disactivate the powers
         else if (Input.GetKeyDown(KeyCode.W))
         {
             disactivatePower();
