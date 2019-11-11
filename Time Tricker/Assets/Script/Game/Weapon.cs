@@ -8,21 +8,12 @@ public class Weapon : MonoBehaviour
     public GameObject projectile;
     public Transform shotPoint;
     public float timeBtwShot;
-    public AudioClip audioClipFire;
 
     public GameObject flashFire;
     public GameObject flashFire2;
     public GameObject flashFire3;
 
-    private AudioSource soundFire;
     private float timestamp = 0.0f;
-    private float mainVolume;
-
-    private void Awake()
-    {
-        soundFire = GetComponent<AudioSource>();
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
-    }
 
     // Update is called once per frame
     void Update()
@@ -53,8 +44,8 @@ public class Weapon : MonoBehaviour
                     Debug.LogError("Fire - Error animation muzzle flash");
                     break;
             }
-            
-            soundFire.PlayOneShot(audioClipFire, mainVolume);
+
+            GetComponent<SoundManagerGun>().PlaySound();
         }
     }
 }
