@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public float localScaleY = 0.005f;
     public float delayShowHealthBar = 2f;
 
+    public float dommage;
+
     public GameObject Hud;
 
     private float maxHealth;
@@ -33,8 +35,7 @@ public class Enemy : MonoBehaviour
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
-            //Hud.GetComponent<PlayerHealth>().TakeDommage(20);
-            GameObject.FindGameObjectsWithTag("Hud")[0].GetComponent<PlayerHealth>().TakeDommage(20);
+            GameObject.FindGameObjectsWithTag("Hud")[0].GetComponent<PlayerHealth>().TakeDommage(dommage);
         }
     }
 

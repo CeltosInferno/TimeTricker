@@ -635,6 +635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1140845593}
     m_Modifications:
+    - target: {fileID: 160231714652130522, guid: 63bb0ecc9122b274c95ca1439590a8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
     - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: gameOver
@@ -643,22 +648,37 @@ PrefabInstance:
     - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 160231714652130522, guid: 63bb0ecc9122b274c95ca1439590a8f3,
+    - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
-      propertyPath: m_Name
-      value: HUD
+      propertyPath: armor
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
+        type: 3}
+      propertyPath: percentageArmorPenetration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1377795591}
+    - target: {fileID: -8670018261516051020, guid: 63bb0ecc9122b274c95ca1439590a8f3,
+        type: 3}
+      propertyPath: invincibilityTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 160231714652130523, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.4
+      value: -20.2
       objectReference: {fileID: 0}
     - target: {fileID: 160231714652130523, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.4
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 160231714652130523, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
@@ -708,12 +728,12 @@ PrefabInstance:
     - target: {fileID: 160231714652130523, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 160231714652130523, guid: 63bb0ecc9122b274c95ca1439590a8f3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63bb0ecc9122b274c95ca1439590a8f3, type: 3}
@@ -1674,10 +1694,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1915390751}
   - component: {fileID: 1915390754}
-  - component: {fileID: 1915390752}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1697,20 +1716,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1915390752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915390750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1acc0115c5ebc004d8f65306a41d8c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundFire: {fileID: 0}
-  fireClip: {fileID: 0}
 --- !u!114 &1915390754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,10 +1728,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109d573dc1f3e934d9ad1e1fb62f156f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 6292595}
+  gameOverDisplay: {fileID: 6292595}
   spawner: {fileID: 981526337}
   delayRestart: 4
   delayDisplayRound: 2
+  gameHasEnded: 0
 --- !u!1 &1946469702
 GameObject:
   m_ObjectHideFlags: 0

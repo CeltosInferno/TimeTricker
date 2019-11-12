@@ -4,35 +4,74 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    //Health bar
     public HealthBar healthBar;
+    //Value of health
     public float health;
-    public float invincibilityTime;
-    public bool gameOver;
 
+    //Armor bar
+    public HealthBar armorBar;
+    //Value of armor
+    public float armor;
+
+    //Percentage of dommage wich penetrate armor
+    [Range(0.0f, 1.0f)]
+    public float percentageArmorPenetration;
+
+    public GameObject player;
+
+    //Time in second of invincibility
+    public float invincibilityTime;
+    //If the player is dead
+    private bool gameOver;
+
+    private Animator playerAnimator;
+
+    //Max value of health
     private float maxHealth;
+    //Max value of armor
+    private float maxArmor;
+    //If the player is invincible
     private bool invincibility;
-    // Start is called before the first frame update
+
     void Start()
     {
         maxHealth = health;
-        gameOver = false;
+        maxArmor = armor;
+        gameOver = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded;
+        playerAnimator = player.transform.Find("Sprites").GetComponent<Animator>();
     }
 
-    public void TakeDommage(int dommage)
+    void Update()
     {
+        gameOver = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded;
+    }
+
+    /**
+     * Give dommage to the right bar. Manage health and armor bar
+     * <param name="dommage">Amount of dommage taken by player</param>
+     * <returns>Void</returns>
+     **/
+    public void TakeDommage(float dommage)
+    {
+        //Take dommage of no invisibility
         if(!invincibility)
         {
-            invincibility = true;
             Debug.Log("Player hit" + dommage);
+            invincibility = true;
 
-            health -= dommage;
-            if(health < 0)
+            if (armor > 0)
             {
-                health = 0;
+                UpdateArmor(dommage);
+                //Update health bar with dommage penetrate armor
+                UpdateHealth(dommage * percentageArmorPenetration);
+            }
+            else
+            {
+                UpdateHealth(dommage);
             }
 
-            healthBar.SetSize(health / maxHealth);
-
+            //Reset invisibility after an amount of time
             Invoke("ResetInvincibility", invincibilityTime);
             if (health <= 0)
             {
@@ -41,14 +80,61 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /**
+     * Manage death player
+     * <returns>Void</returns>
+     **/
     void Die()
     {
+        invincibility = true;
         Debug.Log("Player is dead");
-        gameOver = true;
+        GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded = true;
+        playerAnimator.SetBool("isDead", true);
     }
 
+    /**
+     * Reset the value of invincibility
+     * <returns>Void</returns>
+     **/
     void ResetInvincibility()
     {
-        invincibility = false;
+        if(!playerAnimator.GetBool("isDead"))
+        {
+            invincibility = false;
+        }
+    }
+
+    /**
+     * Update the value of health and the health bar
+     * <param name="dommage">Dommage taken</param>
+     * <returns>Void</returns>
+     **/
+    void UpdateHealth(float dommage)
+    {
+        health -= dommage;
+        if (health < 0)
+        {
+            health = 0;
+        }
+        //Update health bar
+        healthBar.SetSize(health / maxHealth);
+        playerAnimator.SetTrigger("isTakingDommage");
+    }
+
+    /**
+     * Update the value of armor and the amor bar
+     * <param name="dommage">Dommage taken</param>
+     * <returns>Void</returns>
+     **/
+    void UpdateArmor(float dommage)
+    {
+        armor -= dommage;
+        if (armor < 0)
+        {
+            armor = 0;
+        }
+        //Update armor bar
+        armorBar.SetSize(armor / maxArmor);
+        playerAnimator.SetTrigger("isTakingDommage");
     }
 }

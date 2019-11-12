@@ -5,9 +5,9 @@ using UnityEngine;
 public class SoundManagerMonster : MonoBehaviour
 {
     public AudioSource soundScream;
-
     public AudioClip audioClipScream1;
     public AudioClip audioClipScream2;
+
     private float mainVolume;
     public float soundTimeMin;
     public float soundTimeMax;

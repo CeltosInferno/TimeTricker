@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Hud
+  - GameManager
   layers:
   - Default
   - TransparentFX

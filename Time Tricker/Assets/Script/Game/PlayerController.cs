@@ -28,13 +28,22 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = sprites.GetComponent<Animator>();
         SoundManager = GetComponent<SoundManagerProfessorX>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move(moveInput);
-        Jump(jumpInput);
+        if (!anim.GetBool("isDead"))
+        {
+            Move(moveInput);
+            Jump(jumpInput);
+        }
+        else
+        {
+            //reset isMoving to play death animation
+            anim.SetBool("isMoving", false);
+        }
     }
 
 
@@ -48,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis(moveInput) > minToMove || Input.GetAxis(moveInput) < -minToMove)
         {
             anim.SetBool(Variables.movingKey, true);
-            if(!SoundManager.MoveSound.isPlaying && rb.velocity == Vector2.zero)
+            if (!SoundManager.MoveSound.isPlaying && rb.velocity == Vector2.zero)
             {
                 SoundManager.PlaySoundMove();
             }
