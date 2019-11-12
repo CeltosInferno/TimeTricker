@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     {
         if(spawner.transform.childCount == 0)
         {
+            WinGame();
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Hud")[0].GetComponent<PlayerHealth>().gameOver)
+        {
             EndGame();
         }
 
@@ -38,6 +43,19 @@ public class GameManager : MonoBehaviour
             Debug.Log("------ Game Over -------");
             gameOver.SetActive(true);
 
+            Invoke("GameOver", 0);
+            Invoke("Restart", delayRestart);
+        }
+    }
+
+    public void WinGame()
+    {
+        if (!gameHasEnded)
+        {
+            gameHasEnded = true;
+            Debug.Log("------ Win -------");
+            gameOver.SetActive(true);
+
             Invoke("NextRound", delayDisplayRound);
             Invoke("Restart", delayRestart);
         }
@@ -51,6 +69,12 @@ public class GameManager : MonoBehaviour
     void NextRound()
     {
         gameOver.GetComponentInChildren<Text>().text = "Next round";
+        gameOver.GetComponentInChildren<Text>().color = Color.green;
+    }
+
+    void GameOver()
+    {
+        gameOver.GetComponentInChildren<Text>().text = "Game Over";
         gameOver.GetComponentInChildren<Text>().color = Color.red;
     }
 }

@@ -349,6 +349,7 @@ MonoBehaviour:
   localScaleX: 0.005
   localScaleY: 0.005
   delayShowHealthBar: 2
+  Hud: {fileID: 160231714652130522, guid: 63bb0ecc9122b274c95ca1439590a8f3, type: 3}
 --- !u!114 &-691625042557515043
 MonoBehaviour:
   m_ObjectHideFlags: 0

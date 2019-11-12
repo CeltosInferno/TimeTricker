@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Hud
   layers:
   - Default
   - TransparentFX
