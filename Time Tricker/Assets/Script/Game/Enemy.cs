@@ -18,7 +18,9 @@ public class Enemy : MonoBehaviour
     public GameObject Hud;
 
     private float maxHealth;
-    
+    public float forceImpactX;
+    public float forceImpactY;
+
 
     private void Start()
     {

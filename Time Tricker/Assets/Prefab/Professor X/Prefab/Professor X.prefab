@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266842a1b9e52c04d87abdfab2b953a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   jumpForce: 5
   isGrounded: 0
   minToMove: 0.1
@@ -402,10 +402,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f434974f2fd3b548814bddd6eddfb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpSound: {fileID: 1866509523620435023}
-  MoveSound: {fileID: 5557784102729359150}
+  JumpAudioSound: {fileID: 1866509523620435023}
+  MoveAudioSound: {fileID: 5557784102729359150}
   jumpClip: {fileID: 8300000, guid: f053c9324879bb54b8451351de81e5a8, type: 3}
   moveClip: {fileID: 8300000, guid: 207bf24668a22a740a068ad04d6e4a47, type: 3}
+  hurtClip: {fileID: 8300000, guid: 42789abe9f0aa30469056065cf17a9ed, type: 3}
+  deadClip: {fileID: 8300000, guid: 0eccf6e333d90844082e0e1258e20086, type: 3}
 --- !u!1 &1292847464791028
 GameObject:
   m_ObjectHideFlags: 0

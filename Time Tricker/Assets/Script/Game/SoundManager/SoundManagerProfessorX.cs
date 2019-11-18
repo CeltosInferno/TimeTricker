@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SoundManagerProfessorX : MonoBehaviour
 {
-    public AudioSource JumpSound;
-    public AudioSource MoveSound;
+    public AudioSource JumpAudioSound;
+    public AudioSource MoveAudioSound;
 
     public AudioClip jumpClip;
     public AudioClip moveClip;
+    public AudioClip hurtClip;
+    public AudioClip deadClip;
 
     private float mainVolume;
 
@@ -16,22 +18,33 @@ public class SoundManagerProfessorX : MonoBehaviour
     {
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
 
-        MoveSound.clip = moveClip;
-        MoveSound.volume = mainVolume;
+        MoveAudioSound.clip = moveClip;
+        MoveAudioSound.volume = mainVolume;
     }
 
     // Update is called once per frame
     public void PlaySoundJump()
     {
-        JumpSound.PlayOneShot(jumpClip, mainVolume);
+        JumpAudioSound.PlayOneShot(jumpClip, mainVolume);
     }
 
     public void PlaySoundMove()
     {
-        MoveSound.Play();
+        MoveAudioSound.Play();
     }
     public void StopSoundMove()
     {
-        MoveSound.Stop();
+        MoveAudioSound.Stop();
+    }
+
+    public void PlaySoundHurt()
+    {
+        JumpAudioSound.PlayOneShot(hurtClip, mainVolume);
+    }
+
+    public void PlaySoundDead()
+    {
+        JumpAudioSound.PlayOneShot(deadClip, mainVolume);
+        Debug.Log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
     }
 }

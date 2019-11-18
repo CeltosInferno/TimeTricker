@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis(moveInput) > minToMove || Input.GetAxis(moveInput) < -minToMove)
         {
             anim.SetBool(Variables.movingKey, true);
-            if (!SoundManager.MoveSound.isPlaying && rb.velocity == Vector2.zero)
+            if (!SoundManager.MoveAudioSound.isPlaying && rb.velocity == Vector2.zero)
             {
                 SoundManager.PlaySoundMove();
             }
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool(Variables.movingKey, false);
-            if (SoundManager.MoveSound.isPlaying || rb.velocity != Vector2.zero)
+            if (SoundManager.MoveAudioSound.isPlaying || rb.velocity != Vector2.zero)
             {
                 SoundManager.StopSoundMove();
             }
