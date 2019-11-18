@@ -18,6 +18,11 @@ public class TimeController : MonoBehaviour
 
     //the sprite and script of the energy bars
     public EnergyBars energyBars;
+    //the background color when a power is used
+    public ColorChanger backgroundRenderer;
+    public Color speedColor;
+    public Color slowColor;
+    public float colorChangeTime = 1f;
 
     //current energy value (half of the totalPower)
     float currentEnergy;
@@ -65,6 +70,7 @@ public class TimeController : MonoBehaviour
     void disactivatePower()
     {
         TimeManager.globalTimeMultiplier = 1f;
+        backgroundRenderer.changeColor(Color.clear, colorChangeTime);
         isSpeedingUp = false;
         isSlowingDowm = false;
     }
@@ -83,6 +89,7 @@ public class TimeController : MonoBehaviour
             isSpeedingUp = true;
             isSlowingDowm = false;
             currentEnergy += activatePowerCost;
+            backgroundRenderer.changeColor(speedColor, colorChangeTime);
         }
         else
         {
@@ -90,6 +97,8 @@ public class TimeController : MonoBehaviour
             isSpeedingUp = false;
             isSlowingDowm = true;
             currentEnergy -= activatePowerCost;
+            backgroundRenderer.changeColor(slowColor, colorChangeTime);
+            // backgroundRenderer.color = slowColor;
         }
     }
 
