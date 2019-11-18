@@ -27,8 +27,22 @@ public class TimeController : MonoBehaviour
     //current energy value (half of the totalPower)
     float currentEnergy;
 
-    bool isSlowingDowm = false;
+    bool isSlowingDown = false;
     bool isSpeedingUp = false;
+
+
+    public AudioClip soundSlowDown;
+    public AudioClip soundSpeedUp;
+
+    private AudioSource soundPlayer;
+    private float mainVolume;
+
+    private void Awake()
+    {
+        soundPlayer = GetComponent<AudioSource>();
+        mainVolume = PlayerPrefs.GetFloat("MainVolume");
+        mainVolume *= 3;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +66,7 @@ public class TimeController : MonoBehaviour
     void CalculateEnergy()
     {
         float cost = costPerSeconds * Time.deltaTime;
-        if (isSlowingDowm) { 
+        if (isSlowingDown) { 
             currentEnergy = Mathf.Max(0f, currentEnergy - cost);
         }
         else if (isSpeedingUp) { 
@@ -64,6 +78,16 @@ public class TimeController : MonoBehaviour
         }
     }
 
+    void playSpeedUpSound()
+    {
+        soundPlayer.PlayOneShot(soundSpeedUp, mainVolume);
+    }
+
+    void playSlowDownSound()
+    {
+        soundPlayer.PlayOneShot(soundSlowDown, mainVolume);
+    }
+
     /*
      * Should called when disactivating a power
      */
@@ -72,8 +96,10 @@ public class TimeController : MonoBehaviour
         TimeManager.globalTimeMultiplier = 1f;
         backgroundRenderer.changeColor(Color.clear, colorChangeTime);
         energyBars.normalVisualEffect();
+        if (isSpeedingUp) playSlowDownSound(); 
+        if (isSlowingDown) playSpeedUpSound();
         isSpeedingUp = false;
-        isSlowingDowm = false;
+        isSlowingDown = false;
     }
 
     /*
@@ -88,21 +114,23 @@ public class TimeController : MonoBehaviour
         {
             TimeManager.globalTimeMultiplier = SpeedValue;
             isSpeedingUp = true;
-            isSlowingDowm = false;
+            isSlowingDown = false;
             currentEnergy += activatePowerCost;
             backgroundRenderer.changeColor(speedColor, colorChangeTime);
             energyBars.speedVisualEffect();
             energyBars.slowVisualEffect(false);
+            playSpeedUpSound();
         }
         else
         {
             TimeManager.globalTimeMultiplier = SlowValue;
             isSpeedingUp = false;
-            isSlowingDowm = true;
+            isSlowingDown = true;
             currentEnergy -= activatePowerCost;
             backgroundRenderer.changeColor(slowColor, colorChangeTime);
             energyBars.slowVisualEffect();
             energyBars.speedVisualEffect(false);
+            playSlowDownSound();
             // backgroundRenderer.color = slowColor;
         }
     }
@@ -122,7 +150,7 @@ public class TimeController : MonoBehaviour
         //slow down button
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            if (isSlowingDowm) disactivatePower();
+            if (isSlowingDown) disactivatePower();
             else if (currentEnergy > 0 + activatePowerCost)
                 activatePower(false);
         }

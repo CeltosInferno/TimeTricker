@@ -326,31 +326,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &303239108 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2946633532529298370, guid: eb5c97ae2abf41043a07067453685c2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2946633531569305348}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &303239110 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2946633532529298380, guid: eb5c97ae2abf41043a07067453685c2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2946633531569305348}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &303239111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303239108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e69803a9248f846b1fb115f13b73f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 303239110}
 --- !u!1 &399920686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,12 +1677,110 @@ MonoBehaviour:
   speedColor: {r: 1, g: 0, b: 0, a: 0.07058824}
   slowColor: {r: 0, g: 0, b: 1, a: 0.07058824}
   colorChangeTime: 0.4
+  soundSlowDown: {fileID: 8300000, guid: 85ac3767af4d96e4c80122522efc131c, type: 3}
+  soundSpeedUp: {fileID: 8300000, guid: 726d22b3d8cce8248b59d731a12c797e, type: 3}
 --- !u!4 &1377795596 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4799768129776184, guid: ac97ee507a3e4964ab395c20f464faf1,
     type: 3}
   m_PrefabInstance: {fileID: 1691119700}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1377795598
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377795591}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 256
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1528492571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2157,31 +2230,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2072566774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2946633531725009604, guid: eb5c97ae2abf41043a07067453685c2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2946633531569305348}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &2072566776 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2946633531725009606, guid: eb5c97ae2abf41043a07067453685c2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2946633531569305348}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2072566777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072566774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e69803a9248f846b1fb115f13b73f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2072566776}
 --- !u!1 &2127838634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,46 +2277,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnergyBars
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseFast.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseFast.g
-      value: 0.6330148
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseFast.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: speedBarCol
-      value: 
-      objectReference: {fileID: 2072566777}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: slowBarCol
-      value: 
-      objectReference: {fileID: 303239111}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseSlow.g
-      value: 0.4847312
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseSlow.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
-        type: 3}
-      propertyPath: intenseSlow.a
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2946633530484829231, guid: eb5c97ae2abf41043a07067453685c2c,
         type: 3}
