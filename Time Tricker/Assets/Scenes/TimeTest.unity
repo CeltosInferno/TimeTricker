@@ -326,6 +326,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &303239108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2946633532529298370, guid: eb5c97ae2abf41043a07067453685c2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2946633531569305348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &303239110 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2946633532529298380, guid: eb5c97ae2abf41043a07067453685c2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2946633531569305348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &303239111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303239108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e69803a9248f846b1fb115f13b73f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 303239110}
 --- !u!1 &399920686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,6 +2157,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2072566774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2946633531725009604, guid: eb5c97ae2abf41043a07067453685c2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2946633531569305348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2072566776 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2946633531725009606, guid: eb5c97ae2abf41043a07067453685c2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2946633531569305348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2072566777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072566774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e69803a9248f846b1fb115f13b73f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2072566776}
 --- !u!1 &2127838634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +2229,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnergyBars
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseFast.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseFast.g
+      value: 0.6330148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseFast.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: speedBarCol
+      value: 
+      objectReference: {fileID: 2072566777}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: slowBarCol
+      value: 
+      objectReference: {fileID: 303239111}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseSlow.g
+      value: 0.4847312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseSlow.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946633530484829230, guid: eb5c97ae2abf41043a07067453685c2c,
+        type: 3}
+      propertyPath: intenseSlow.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2946633530484829231, guid: eb5c97ae2abf41043a07067453685c2c,
         type: 3}

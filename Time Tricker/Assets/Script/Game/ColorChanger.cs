@@ -8,11 +8,18 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    float m_duration;
+    float m_duration = 1f;
     float startTime;
 
     Color startColor;
     Color aimColor;
+
+    private void Start()
+    {
+        startTime = Time.time;
+        startColor = spriteRenderer.color;
+        aimColor = startColor;
+    }
 
     public void changeColor(Color newColor, float duration)
     {

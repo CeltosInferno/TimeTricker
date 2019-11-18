@@ -71,6 +71,7 @@ public class TimeController : MonoBehaviour
     {
         TimeManager.globalTimeMultiplier = 1f;
         backgroundRenderer.changeColor(Color.clear, colorChangeTime);
+        energyBars.normalVisualEffect();
         isSpeedingUp = false;
         isSlowingDowm = false;
     }
@@ -90,6 +91,8 @@ public class TimeController : MonoBehaviour
             isSlowingDowm = false;
             currentEnergy += activatePowerCost;
             backgroundRenderer.changeColor(speedColor, colorChangeTime);
+            energyBars.speedVisualEffect();
+            energyBars.slowVisualEffect(false);
         }
         else
         {
@@ -98,6 +101,8 @@ public class TimeController : MonoBehaviour
             isSlowingDowm = true;
             currentEnergy -= activatePowerCost;
             backgroundRenderer.changeColor(slowColor, colorChangeTime);
+            energyBars.slowVisualEffect();
+            energyBars.speedVisualEffect(false);
             // backgroundRenderer.color = slowColor;
         }
     }
