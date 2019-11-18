@@ -15,28 +15,35 @@ public class PlayerController : MonoBehaviour
     private string moveInput = "Horizontal";
     private string jumpInput = "Jump";
     private bool isFacingRight = true;
+    private SoundManagerProfessorX SoundManager;
+
 
     Animator anim;
 
     public GameObject sprites;
-
-    public AudioSource JumpSound;
-    public AudioSource MoveSound;
-
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = sprites.GetComponent<Animator>();
-
+        SoundManager = GetComponent<SoundManagerProfessorX>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move(moveInput);
-        Jump(jumpInput);
+        if (!anim.GetBool("isDead"))
+        {
+            Move(moveInput);
+            Jump(jumpInput);
+        }
+        else
+        {
+            //reset isMoving to play death animation
+            anim.SetBool("isMoving", false);
+        }
     }
 
 
@@ -50,14 +57,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxis(moveInput) > minToMove || Input.GetAxis(moveInput) < -minToMove)
         {
             anim.SetBool(Variables.movingKey, true);
-            if(!MoveSound.isPlaying && rb.velocity == Vector2.zero)
-                MoveSound.Play();
+            if (!SoundManager.MoveAudioSound.isPlaying && rb.velocity == Vector2.zero)
+            {
+                SoundManager.PlaySoundMove();
+            }
         }
         else
         {
             anim.SetBool(Variables.movingKey, false);
-            if (MoveSound.isPlaying || rb.velocity != Vector2.zero)
-                MoveSound.Stop();
+            if (SoundManager.MoveAudioSound.isPlaying || rb.velocity != Vector2.zero)
+            {
+                SoundManager.StopSoundMove();
+            }
         }
     }
 
@@ -75,7 +86,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, jumpForce) , ForceMode2D.Impulse);
             anim.SetTrigger(Variables.jumpingKey);
-            JumpSound.Play();
+
+            SoundManager.PlaySoundJump();
         }
     }
 

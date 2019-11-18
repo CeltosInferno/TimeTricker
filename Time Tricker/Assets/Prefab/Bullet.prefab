@@ -118,8 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   lifetime: 4
-  forceImpactX: 70
-  forceImpactY: 100
+  forceImpactX: 1
+  forceImpactY: 1.2
   limitationApplicationForce: 0.2
   destroyEffect: {fileID: 1158499846575713536, guid: 7e1b6e3485ac92c4a9a00c93e8a2c88e,
     type: 3}
