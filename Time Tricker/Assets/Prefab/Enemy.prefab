@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 7278577338492337956}
   - component: {fileID: -691625042557515043}
   - component: {fileID: 5854745104291924807}
+  - component: {fileID: 4445977225110834307}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -388,6 +389,20 @@ MonoBehaviour:
   audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
   soundTimeMin: 7
   soundTimeMax: 12
+--- !u!114 &4445977225110834307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133698043228631614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87b4b2441c038c4bb3b81d7becae5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeMultiplier: 1
+  animatorTimeName: timeSpeed
 --- !u!1001 &1831558451208807897
 PrefabInstance:
   m_ObjectHideFlags: 0
