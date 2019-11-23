@@ -23,9 +23,11 @@ public class HighscoreTable : MonoBehaviour
             entryRectTransform.anchoredPosition = new Vector2(0,-templateHeight * i);
             entryTransform.gameObject.SetActive(true);
 
+
+            ScoreData data = SaveSystem.LoadData();
             entryTransform.Find("posText").GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
-            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("HS_S" + i.ToString()).ToString();
-            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetString("HS_N" + i.ToString());
+            entryTransform.Find("scoreText").GetComponent<TextMeshProUGUI>().text = data.scores[i].ToString();
+            entryTransform.Find("nameText").GetComponent<TextMeshProUGUI>().text = data.names[i];
         }
     }
 }
