@@ -8,30 +8,23 @@ public class Weapon : MonoBehaviour
     public GameObject projectile;
     public Transform shotPoint;
     public float timeBtwShot;
-    public AudioClip audioClipFire;
 
     public GameObject flashFire;
     public GameObject flashFire2;
     public GameObject flashFire3;
 
-    private AudioSource soundFire;
     private float timestamp = 0.0f;
-    private float mainVolume;
-
-    private void Awake()
-    {
-        soundFire = GetComponent<AudioSource>();
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
-    }
 
     // Update is called once per frame
     void Update()
     {
+        bool gameHasEnded = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded;
+
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
 
-        if (Input.GetMouseButton(0) && Time.time > timestamp)
+        if (Input.GetMouseButton(0) && Time.time > timestamp && !gameHasEnded)
         {
             timestamp = Time.time + timeBtwShot;
             Instantiate(projectile, shotPoint.position, transform.rotation);
@@ -53,8 +46,8 @@ public class Weapon : MonoBehaviour
                     Debug.LogError("Fire - Error animation muzzle flash");
                     break;
             }
-            
-            soundFire.PlayOneShot(audioClipFire, mainVolume);
+
+            GetComponent<SoundManagerGun>().PlaySound();
         }
     }
 }

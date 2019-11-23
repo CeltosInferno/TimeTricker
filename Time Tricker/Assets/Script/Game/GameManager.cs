@@ -6,20 +6,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOver;
+    public GameObject gameOverDisplay;
     public GameObject spawner;
+
     public float delayRestart;
     public float delayDisplayRound;
 
-    bool gameHasEnded = false;
+    public bool gameHasEnded;
 
+    private void Start()
+    {
+        gameHasEnded = false;
+    }
     private void Awake()
     {
-        gameOver.SetActive(false);
+        gameOverDisplay.SetActive(false);
     }
     private void Update()
     {
         if(spawner.transform.childCount == 0)
+        {
+            WinGame();
+        }
+
+        if (gameHasEnded)
         {
             EndGame();
         }
@@ -32,15 +42,20 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-        if (!gameHasEnded)
-        {
-            gameHasEnded = true;
-            Debug.Log("------ Game Over -------");
-            gameOver.SetActive(true);
+        Debug.Log("------ Game Over -------");
+        gameOverDisplay.SetActive(true);
 
-            Invoke("NextRound", delayDisplayRound);
-            Invoke("Restart", delayRestart);
-        }
+        Invoke("GameOver", 0);
+        Invoke("Restart", delayRestart);
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("------ Win -------");
+        gameOverDisplay.SetActive(true);
+
+        Invoke("NextRound", delayDisplayRound);
+        Invoke("Restart", delayRestart);
     }
 
     void Restart()
@@ -50,7 +65,13 @@ public class GameManager : MonoBehaviour
 
     void NextRound()
     {
-        gameOver.GetComponentInChildren<Text>().text = "Next round";
-        gameOver.GetComponentInChildren<Text>().color = Color.red;
+        gameOverDisplay.GetComponentInChildren<Text>().text = "Next round";
+        gameOverDisplay.GetComponentInChildren<Text>().color = Color.green;
+    }
+
+    void GameOver()
+    {
+        gameOverDisplay.GetComponentInChildren<Text>().text = "Game Over";
+        gameOverDisplay.GetComponentInChildren<Text>().color = Color.red;
     }
 }

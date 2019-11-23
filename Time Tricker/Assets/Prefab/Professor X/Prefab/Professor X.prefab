@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 6670362014462706419}
   - component: {fileID: 5490821219586410696}
   - component: {fileID: 8197417127258873530}
+  - component: {fileID: 909006598653054653}
   m_Layer: 0
   m_Name: Professor X
   m_TagString: Player
@@ -337,13 +338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266842a1b9e52c04d87abdfab2b953a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   jumpForce: 5
   isGrounded: 0
   minToMove: 0.1
   sprites: {fileID: 3168542307991931847}
-  JumpSound: {fileID: 1866509523620435023}
-  MoveSound: {fileID: 5557784102729359150}
 --- !u!50 &5490821219586410696
 Rigidbody2D:
   serializedVersion: 4
@@ -391,6 +390,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4926567, y: 3.8133445}
   m_EdgeRadius: 0
+--- !u!114 &909006598653054653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253555738323472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f434974f2fd3b548814bddd6eddfb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpAudioSound: {fileID: 1866509523620435023}
+  MoveAudioSound: {fileID: 5557784102729359150}
+  jumpClip: {fileID: 8300000, guid: f053c9324879bb54b8451351de81e5a8, type: 3}
+  moveClip: {fileID: 8300000, guid: 207bf24668a22a740a068ad04d6e4a47, type: 3}
+  hurtClip: {fileID: 8300000, guid: 42789abe9f0aa30469056065cf17a9ed, type: 3}
+  deadClip: {fileID: 8300000, guid: 0eccf6e333d90844082e0e1258e20086, type: 3}
 --- !u!1 &1292847464791028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7079,8 +7096,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 207bf24668a22a740a068ad04d6e4a47, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 2.5
   Loop: 0
@@ -7206,8 +7223,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f053c9324879bb54b8451351de81e5a8, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -10187,7 +10204,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
