@@ -64,7 +64,7 @@ public class ScoreData
         //loading previous scores
         for (int i=0; i < 8; i++)
         {
-            scores[i] = i * 5;
+            scores[i] = (8-i) * 5;
             names[i] = default_names[i];
         }
     }
