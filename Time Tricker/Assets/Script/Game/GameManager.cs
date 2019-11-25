@@ -7,16 +7,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverDisplay;
-    public GameObject spawner;
 
     public float delayRestart;
     public float delayDisplayRound;
 
     public bool gameHasEnded;
+    public bool gameHasWon;
 
     private void Start()
     {
         gameHasEnded = false;
+        gameHasWon = false;
     }
     private void Awake()
     {
@@ -24,6 +25,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (gameHasWon)
+        {
+            WinGame();
+        }
         if (gameHasEnded)
         {
             EndGame();
@@ -60,7 +65,8 @@ public class GameManager : MonoBehaviour
 
     void NextRound()
     {
-        gameOverDisplay.GetComponentInChildren<Text>().text = "Next round";
+        gameOverDisplay.GetComponentInChildren<Text>().text = "You survived! Well played";
+        gameOverDisplay.GetComponentInChildren<Text>().fontSize = 30;
         gameOverDisplay.GetComponentInChildren<Text>().color = Color.green;
     }
 

@@ -12,12 +12,19 @@ public class WaveSpawner : MonoBehaviour
     };
 
     [System.Serializable]
-    public class Wave
+    public class EnemyType
     {
         public string name;
         public Transform enemy;
         public int count;
         public float rate;
+    }
+
+    [System.Serializable]
+    public class Wave
+    {
+        public string name;
+        public EnemyType[] enemyType;
     }
 
     public Wave[] waves;
@@ -32,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     public SpawnState state = SpawnState.COUNTING;
-
+    
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
@@ -52,7 +59,6 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("En cours");
                 return;
             }
         }
@@ -79,8 +85,9 @@ public class WaveSpawner : MonoBehaviour
 
         if(nextWave + 1 > waves.Length -1)
         {
-            nextWave = 0;
-            Debug.Log("All wave completed. Looping...");
+            state = SpawnState.WAITING;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().gameHasWon = true; 
+            Debug.Log("All wave completed");
         }
         else
         {
@@ -108,11 +115,13 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spwaning wave : " + p_wave.name);
         state = SpawnState.SPAWNING;
 
-        for(int i = 0; i < p_wave.count; i++)
+        for(int enemyTypeIndex = 0; enemyTypeIndex < p_wave.enemyType.Length; enemyTypeIndex++)
         {
-            SpawnEnemy(p_wave.enemy);
-            Debug.Log(1.0f / p_wave.rate);
-            yield return new WaitForSeconds(1.0f / p_wave.rate);
+            for(int countOfEnemy = 0; countOfEnemy < p_wave.enemyType[enemyTypeIndex].count; countOfEnemy++)
+            {
+                SpawnEnemy(p_wave.enemyType[enemyTypeIndex].enemy);
+                yield return new WaitForSeconds(1.0f / p_wave.enemyType[enemyTypeIndex].rate);
+            }
         }
 
         state = SpawnState.WAITING;
