@@ -8,6 +8,7 @@ TagManager:
   - Hud
   - GameManager
   - TimeZone
+  - Enemy
   layers:
   - Default
   - TransparentFX
