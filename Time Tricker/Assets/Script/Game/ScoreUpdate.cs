@@ -10,16 +10,19 @@ public class ScoreUpdate : MonoBehaviour
     int delta = 1;
     int maxFontSize = 27;
     int minFontSize = 15;
+    private static int score;
 
     void Start()
     {
         text = GetComponent<Text>();
+        addScore(0);
     }
 
     public void addScore(int sc)
     {
         StartCoroutine(resizeFont());
-        text.text = (System.Convert.ToInt32(text.text) + sc).ToString();
+        score += sc;
+        text.text = score.ToString();
     }
 
     public IEnumerator resizeFont()
