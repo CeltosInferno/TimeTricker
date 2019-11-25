@@ -17,9 +17,9 @@ public class TimeController : MonoBehaviour
     public float costPerSeconds = 10f;
 
     //the sprite and script of the energy bars
-    public EnergyBars energyBars;
+    private EnergyBars energyBars;
     //the background color when a power is used
-    public ColorChanger backgroundRenderer;
+    private ColorChanger backgroundRenderer;
     public Color speedColor;
     public Color slowColor;
     public float colorChangeTime = 1f;
@@ -41,6 +41,8 @@ public class TimeController : MonoBehaviour
     {
         soundPlayer = GetComponent<AudioSource>();
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
+        energyBars = GameObject.FindGameObjectWithTag("EnergyBars").GetComponent<EnergyBars>();
+        backgroundRenderer = GameObject.FindGameObjectWithTag("TimeColorFilter").GetComponent<ColorChanger>();
         mainVolume *= 3;
     }
 
