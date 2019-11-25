@@ -9,6 +9,8 @@ TagManager:
   - GameManager
   - TimeZone
   - Enemy
+  - EnergyBars
+  - TimeColorFilter
   layers:
   - Default
   - TransparentFX

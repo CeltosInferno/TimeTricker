@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float percentageArmorPenetration;
 
-    public GameObject player;
+    private GameObject player;
 
     //Time in second of invincibility
     public float invincibilityTime;
@@ -38,7 +38,8 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth = health;
         maxArmor = armor;
-        gameOver = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded;
+        gameOver = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().gameHasEnded;
+        player = GameObject.FindGameObjectWithTag("Player");
         playerAnimator = player.transform.Find("Sprites").GetComponent<Animator>();
     }
 
