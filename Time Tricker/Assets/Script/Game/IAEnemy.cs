@@ -48,9 +48,10 @@ public class IAEnemy : TimeEntity
         }
     }
 
+    //On déclenche potentiellement un saut à chaque rencontre de bumper si le joueur est en hauteur
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (canJump)
+        if (canJump && positionPlayer.position.y > rb.position.y) 
         {
             canJump = false;
             StartCoroutine(DelayJump());
