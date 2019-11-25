@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IAEnemy : MonoBehaviour
+public class IAEnemy : TimeEntity
 {
     public float speed;
     public float forceJump;
@@ -37,24 +37,25 @@ public class IAEnemy : MonoBehaviour
         directionMove = positionPlayer.position.x - GetComponent<Transform>().position.x;
         if (directionMove < 0)
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
             //rb.AddForce(-transform.right * forceMove, ForceMode2D.Force);
         }
         else
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
             //rb.AddForce(transform.right * forceMove, ForceMode2D.Force);
         }
     }
 
+    //On déclenche potentiellement un saut à chaque rencontre de bumper si le joueur est en hauteur
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (canJump)
+        if (canJump && positionPlayer.position.y > rb.position.y) 
         {
             canJump = false;
             StartCoroutine(DelayJump());
             Debug.Log("Jump because collision with" + collision.gameObject.name);
-            rb.AddForce(transform.up * forceJump, ForceMode2D.Impulse);
+            rb.AddForce(transform.up * forceJump * Mathf.Sqrt(m_timeScale), ForceMode2D.Impulse);
         }
     }
 

@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     public bool gameHasEnded;
     public bool gameHasWon;
 
-    private void Start()
-    {
-        gameHasEnded = false;
-        gameHasWon = false;
+    private void Start()
+    {
+        gameHasEnded = false;
+        gameHasWon = false;
     }
     private void Awake()
     {
@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (gameHasWon)
-        {
-            WinGame();
+        if (gameHasWon)
+        {
+            WinGame();
         }
-        if (gameHasEnded)
-        {
-            EndGame();
+        if (gameHasEnded)
+        {
+            EndGame();
         }
 
         //return to main menu

@@ -34,7 +34,7 @@ public class PlayerCheck : MonoBehaviour
         if (checkFallingState.Equals(true))
         {
             /* Si la vélocité en y du rigidBody du personnage est négative, cela veut dire qu'il est en train de tomber */
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y < -0.001) //On utilise une valeur négative négligeable pour empêcher l'animation de se déclencher pour rien
             {
                 anim.SetBool(Variables.fallingKey, true);
                 checkFallingState = false;
@@ -42,7 +42,7 @@ public class PlayerCheck : MonoBehaviour
         }
         if (checkFallingState.Equals(false))
         {
-            if (rb.velocity.y >= 0)
+            if (rb.velocity.y >= -0.001)
             {
                 anim.SetBool(Variables.fallingKey, false);
                 checkFallingState = true;

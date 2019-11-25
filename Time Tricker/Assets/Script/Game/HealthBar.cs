@@ -11,6 +11,7 @@ public class HealthBar : MonoBehaviour
     {
         //get the bar
         bar = transform.Find("Bar");
+        Debug.Log(bar);
     }
 
     /**
