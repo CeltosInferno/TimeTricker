@@ -524,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408752905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000014305115, y: 8.650002, z: -10}
+  m_LocalPosition: {x: -0.0000011920929, y: 8.650002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1013648375}
@@ -961,7 +961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000014305115, y: 8.650002, z: -10}
+  m_LocalPosition: {x: -0.0000011920929, y: 8.650002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 765672375}
@@ -2608,30 +2608,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1691119700}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1377795592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377795591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca4076c23ec8f74a8abf36fca773e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SlowValue: 0.3
-  SpeedValue: 1.5
-  totalPower: 300
-  activatePowerCost: 0
-  costPerSeconds: 10
-  energyBars: {fileID: 1849564528}
-  backgroundRenderer: {fileID: 841583994}
-  speedColor: {r: 1, g: 0, b: 0, a: 0.07058824}
-  slowColor: {r: 0, g: 0, b: 1, a: 0.07058824}
-  colorChangeTime: 0.4
-  soundSlowDown: {fileID: 8300000, guid: 85ac3767af4d96e4c80122522efc131c, type: 3}
-  soundSpeedUp: {fileID: 8300000, guid: 726d22b3d8cce8248b59d731a12c797e, type: 3}
 --- !u!4 &1377795596 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4799768129776184, guid: ac97ee507a3e4964ab395c20f464faf1,
@@ -3109,6 +3085,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: energyBars
+      value: 
+      objectReference: {fileID: 1849564528}
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: backgroundRenderer
+      value: 
+      objectReference: {fileID: 841583994}
     - target: {fileID: 1253555738323472, guid: ac97ee507a3e4964ab395c20f464faf1, type: 3}
       propertyPath: m_Name
       value: Professor X
