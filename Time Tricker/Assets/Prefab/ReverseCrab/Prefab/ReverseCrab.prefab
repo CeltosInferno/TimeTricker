@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 5345162575450004810}
   - component: {fileID: 1462046064792330250}
   - component: {fileID: 1174308177957374299}
-  - component: {fileID: 701661047260794701}
+  - component: {fileID: 3748981004569829326}
   m_Layer: 0
   m_Name: ReverseCrab
   m_TagString: Untagged
@@ -536,7 +536,7 @@ MonoBehaviour:
   Hud: {fileID: 0}
   forceImpactX: 0.75
   forceImpactY: 1
---- !u!114 &701661047260794701
+--- !u!114 &3748981004569829326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1189439081194764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87b4b2441c038c4bb3b81d7becae5f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f818c6256799f54aa917c93e6542785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 1
