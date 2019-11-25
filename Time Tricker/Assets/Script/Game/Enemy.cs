@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy hit" + dommage);
 
-        GetComponent<Animator>().SetTrigger("isTakingDommage");
+        GetComponent<Animator>().SetTrigger("isTakingDamage");
 
         health -= dommage;
         healthBar.SetSize(health / maxHealth);

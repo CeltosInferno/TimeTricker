@@ -125,7 +125,7 @@ public class PlayerHealth : MonoBehaviour
         }
         //Update health bar
         healthBar.SetSize(health / maxHealth);
-        playerAnimator.SetTrigger("isTakingDommage");
+        playerAnimator.SetTrigger("isTakingDamage");
     }
 
     /**
@@ -142,6 +142,6 @@ public class PlayerHealth : MonoBehaviour
         }
         //Update armor bar
         armorBar.SetSize(armor / maxArmor);
-        playerAnimator.SetTrigger("isTakingDommage");
+        playerAnimator.SetTrigger("isTakingDamage");
     }
 }
