@@ -18694,6 +18694,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: energyBars
+      value: 
+      objectReference: {fileID: 2020671665}
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: backgroundRenderer
+      value: 
+      objectReference: {fileID: 799751086}
     - target: {fileID: 0}
       propertyPath: healthBar
       value: 
