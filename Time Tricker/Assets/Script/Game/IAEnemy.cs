@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class IAEnemy : MonoBehaviour
 {
-    public GameObject player;
     public float speed;
     public float forceJump;
     public float delayJump;
@@ -18,7 +17,7 @@ public class IAEnemy : MonoBehaviour
 
     void Start()
     {
-        positionPlayer = player.GetComponent<Transform>();
+        positionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         canJump = true;
     }

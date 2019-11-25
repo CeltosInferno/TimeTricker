@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Hud
   - GameManager
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -24,11 +24,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(spawner.transform.childCount == 0)
-        {
-            WinGame();
-        }
-
         if (gameHasEnded)
         {
             EndGame();
