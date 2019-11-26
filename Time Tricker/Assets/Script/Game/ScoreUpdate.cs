@@ -25,6 +25,11 @@ public class ScoreUpdate : MonoBehaviour
         text.text = score.ToString();
     }
 
+    public static int getScore()
+    {
+        return score;
+    }
+
     public IEnumerator resizeFont()
     {
         text.fontSize = System.Math.Min(text.fontSize + delta, maxFontSize);
