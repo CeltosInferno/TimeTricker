@@ -36,12 +36,4 @@ public class ScoreUpdate : MonoBehaviour
         yield return new WaitForSeconds(1);
         text.fontSize = System.Math.Max(text.fontSize - delta, minFontSize);
     }
-    public void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            addScore(1);
-            Debug.Log("ADDING SCORE");
-        }
-    }
 }

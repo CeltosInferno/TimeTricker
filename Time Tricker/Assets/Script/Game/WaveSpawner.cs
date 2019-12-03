@@ -39,9 +39,12 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     public SpawnState state = SpawnState.COUNTING;
-    
+
+    private ScoreUpdate su;
+
     private void Start()
     {
+        su = GameObject.FindObjectOfType<ScoreUpdate>();
         waveCountdown = timeBetweenWaves;
         if(spawnPoints.Length == 0)
         {
@@ -82,6 +85,7 @@ public class WaveSpawner : MonoBehaviour
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
+        su.addScore(1);
 
         if(nextWave + 1 > waves.Length -1)
         {
