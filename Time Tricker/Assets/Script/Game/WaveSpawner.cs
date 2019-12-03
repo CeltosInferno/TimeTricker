@@ -91,6 +91,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
+            GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
             nextWave++;
         }
     }
@@ -133,7 +134,7 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Enemy spawn ");
         Transform l_swaningPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(p_enemy, l_swaningPoint.position, l_swaningPoint.rotation);
-        //create pawn effect
+        //create spawn effect
         Instantiate(spawnEffect, l_swaningPoint.position, Quaternion.identity);
         //play sound
         GetComponent<SoundManagerSpawner>().PlaySpawn();

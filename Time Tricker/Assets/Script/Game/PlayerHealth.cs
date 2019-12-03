@@ -72,6 +72,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 UpdateHealth(dommage);
             }
+            playerAnimator.SetTrigger("isTakingDamage");
 
             if (health <= 0)
             {
@@ -83,6 +84,12 @@ public class PlayerHealth : MonoBehaviour
                 Invoke("ResetInvincibility", invincibilityTime);
             }
         }
+    }
+
+    public void RestoreHealth()
+    {
+        health = maxHealth;
+        UpdateHealth(0);
     }
 
     /**
@@ -125,7 +132,6 @@ public class PlayerHealth : MonoBehaviour
         }
         //Update health bar
         healthBar.SetSize(health / maxHealth);
-        playerAnimator.SetTrigger("isTakingDamage");
     }
 
     /**
