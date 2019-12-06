@@ -8,7 +8,7 @@ public class ScoreData
     public int[] scores;
     public string[] names;
 
-    private string[] default_names = { "Pr.Xavier", "Pr.Layton", "Pr.Maestro", "Pr.Einstein", "Pr.Potvin", "Pr.Tournesol", "Pr.Proton", "Pr.Snape" };
+    private string[] default_names = { "Pr.Xavier", "Pr.Layton", "Pr.Doofenshmirtz", "Pr.Einstein", "Pr.Potvin", "Pr.Tournesol", "Pr.Proton", "Pr.Snape" };
 
     public static void addScore(int new_score, string player_name)
     {
