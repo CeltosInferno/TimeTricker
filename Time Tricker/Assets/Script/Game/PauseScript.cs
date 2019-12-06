@@ -7,9 +7,9 @@ public class PauseScript : MonoBehaviour
     private bool isPaused;
     private float previousScale;
     [SerializeField]
-    private GameObject[] toDeactivate;
+    private GameObject[] toDeactivate = { };
     [SerializeField]
-    private GameObject[] toActivate;
+    private GameObject[] toActivate = { };
 
     void Start()
     {

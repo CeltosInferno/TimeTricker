@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        Time.timeScale = 1f; //disactivation of pause
         gameOverDisplay.SetActive(false);
     }
     private void Update()
