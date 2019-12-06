@@ -25,18 +25,15 @@ public class ScoreUpdate : MonoBehaviour
         text.text = score.ToString();
     }
 
+    public static int getScore()
+    {
+        return score;
+    }
+
     public IEnumerator resizeFont()
     {
         text.fontSize = System.Math.Min(text.fontSize + delta, maxFontSize);
         yield return new WaitForSeconds(1);
         text.fontSize = System.Math.Max(text.fontSize - delta, minFontSize);
-    }
-    public void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            addScore(1);
-            Debug.Log("ADDING SCORE");
-        }
     }
 }

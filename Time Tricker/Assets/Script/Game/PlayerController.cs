@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float minToMove = 0.1f;
 
     private Rigidbody2D rb;
+    public ParticleSystem movingDust; 
 
     private string moveInput = "Horizontal";
     private string jumpInput = "Jump";
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             Move(moveInput);
             Jump(jumpInput);
+
         }
         else
         {
@@ -46,14 +48,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    /* Applique toutes les actions nécessaires lors d'un mouvement simple (gauche ou droite) */
     void Move(string moveInput)
     {
+        //On crée l'action de mouvement
         Vector3 movement = new Vector3(Input.GetAxis(moveInput), 0f, 0f);
         transform.Translate(movement * Time.deltaTime * speed);
 
+        //Si nécessaire, on fait changer le personnage de direction
         CharacterFlip(movement);
 
+
+        //On joue le son de mouvement, et on le coupe si on arrête de bouger
         if (Input.GetAxis(moveInput) > minToMove || Input.GetAxis(moveInput) < -minToMove)
         {
             anim.SetBool(Variables.movingKey, true);
@@ -70,8 +76,13 @@ public class PlayerController : MonoBehaviour
                 SoundManager.StopSoundMove();
             }
         }
+
+        //On active notre poussière
+        CreateMovingDust(movement);
+
     }
 
+    //Permet de détecter si on a changé de direction, et de changer d'orientation si besoin
     private void CharacterFlip(Vector3 movement)
     {
         if ((movement.x < 0 && isFacingRight) || (movement.x > 0 && !isFacingRight))
@@ -98,5 +109,19 @@ public class PlayerController : MonoBehaviour
         Vector3 characterScale = sprites.transform.localScale;
         characterScale.x *= -1;
         sprites.transform.localScale = characterScale;
+    }
+
+    //Gère le particleSystem simulant la poussière du mouvement (on checke si on touche un sol pour activer l'effet)
+    void CreateMovingDust(Vector3 movement)
+    {
+        if (isGrounded && movement.x != 0)
+        {
+            movingDust.Play();
+
+        }
+        else
+        {
+            movingDust.Stop();
+        }
     }
 }

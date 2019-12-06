@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        Time.timeScale = 1f; //disactivation of pause
         gameOverDisplay.SetActive(false);
     }
     private void Update()
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
         gameOverDisplay.SetActive(true);
 
         Invoke("GameOver", 0);
-        Invoke("Restart", delayRestart);
+        Invoke("GoHighscoreMenu", delayRestart);
     }
 
     public void WinGame()
@@ -56,6 +57,11 @@ public class GameManager : MonoBehaviour
 
         Invoke("NextRound", delayDisplayRound);
         Invoke("Restart", delayRestart);
+    }
+
+    void GoHighscoreMenu()
+    {
+        SceneManager.LoadScene("EndGameMenu");
     }
 
     void Restart()

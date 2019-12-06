@@ -37,12 +37,14 @@ public class IAEnemy : TimeEntity
         directionMove = positionPlayer.position.x - GetComponent<Transform>().position.x;
         if (directionMove < 0)
         {
-            transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
+            //transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
+            TimeTranslate(transform, Vector3.left * speed * Time.deltaTime);
             //rb.AddForce(-transform.right * forceMove, ForceMode2D.Force);
         }
         else
         {
-            transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
+            //transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
+            TimeTranslate(transform, Vector3.right * speed * Time.deltaTime);
             //rb.AddForce(transform.right * forceMove, ForceMode2D.Force);
         }
     }
@@ -55,7 +57,8 @@ public class IAEnemy : TimeEntity
             canJump = false;
             StartCoroutine(DelayJump());
             Debug.Log("Jump because collision with" + collision.gameObject.name);
-            rb.AddForce(transform.up * forceJump * Mathf.Sqrt(m_timeScale), ForceMode2D.Impulse);
+            TimeAddForce(rb, transform.up * forceJump, ForceMode2D.Impulse);
+            //rb.AddForce(transform.up * forceJump * Mathf.Sqrt(m_timeScale), ForceMode2D.Impulse);
         }
     }
 
