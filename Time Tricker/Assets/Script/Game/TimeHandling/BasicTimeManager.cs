@@ -11,6 +11,7 @@ public class BasicTimeManager : TimeManager
 {
     protected TimeEntity timeEntity;
     protected Animator anim;
+    protected SoundManager soundManager;
 
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
@@ -21,12 +22,16 @@ public class BasicTimeManager : TimeManager
         if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in BasicTimeManager");
         anim = GetComponent<Animator>();
         if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
+        soundManager = GetComponent<SoundManager>();
+        if (soundManager == null) Debug.LogError("Could not find a SoundManager in BasicTimeManager");
+        //SetPitch
     }
 
     protected void normalReaction(float value)
     {
-        if (timeEntity != null) timeEntity.SetTimeScale(value);
-        if (anim != null) anim.SetFloat(animatorTimeName, value);
+        if (timeEntity) timeEntity.SetTimeScale(value);
+        if (anim) anim.SetFloat(animatorTimeName, value);
+        if (soundManager) soundManager.SetPitch(value);
     }
 
     override public void ReactToSpeedUp(float value)

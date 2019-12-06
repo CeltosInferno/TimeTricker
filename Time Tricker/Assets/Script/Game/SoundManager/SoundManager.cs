@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Parent class of the SoundManagers
- * will read the mainVolume and playSounds according to it
+ * will read the mainVolume and play sounds according to it
  */
 public class SoundManager : MonoBehaviour
 {
@@ -18,6 +18,10 @@ public class SoundManager : MonoBehaviour
         void Start()
     {
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
+    }
+
+    public void SetPitch(float newPitch) {
+        audioSource.pitch = newPitch;
     }
 
     //given a sound, will play it once
