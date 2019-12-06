@@ -11,9 +11,36 @@ using UnityEngine;
 public abstract class TimeEntity : MonoBehaviour
 {
     protected float m_timeScale = 1f;
+
+    private Rigidbody2D m_rb;
+    void Start()
+    {
+        m_rb = GetComponent<Rigidbody2D>();
+    }
     public void SetTimeScale(float value)
     {
+        float old_timeScale = m_timeScale;
         m_timeScale = value;
+        if (m_rb)
+        {
+            float ratio = m_timeScale / old_timeScale;
+            m_rb.velocity *= ratio;
+            m_rb.angularDrag *= ratio;
+            m_rb.angularVelocity *= ratio;
+            m_rb.drag *= ratio;
+            m_rb.gravityScale *= ratio;
+            m_rb.mass *= ratio;
+        }
+    }
+
+    public void TimeTranslate(Transform transform, Vector3 value)
+    {
+        transform.Translate(value * m_timeScale);
+    }
+
+    public void TimeAddForce(Rigidbody2D rb, Vector2 force, ForceMode2D mode)
+    {
+        rb.AddForce(force * Mathf.Sqrt(m_timeScale), mode);
     }
 
 }
