@@ -89,7 +89,7 @@ public class PlayerHealth : MonoBehaviour
      * Manage death player
      * <returns>Void</returns>
      **/
-    void Die()
+    public void Die()
     {
         invincibility = true;
         Debug.Log("Player is dead");
