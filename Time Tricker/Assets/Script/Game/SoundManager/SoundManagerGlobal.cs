@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerGlobal : MonoBehaviour
+/*
+ * SoundManager used to play musics, owned by thr camera
+ */
+public class SoundManagerGlobal : SoundManager
 {
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     public AudioClip MusicClip;
 
-    private float mainVolume;
+    //private float mainVolume;
 
-    void Start()
+    protected override 
+        void Start()
     {
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
+        base.Start();
+        //mainVolume = PlayerPrefs.GetFloat("MainVolume");
         audioSource.clip = MusicClip;
         audioSource.volume = mainVolume;
 

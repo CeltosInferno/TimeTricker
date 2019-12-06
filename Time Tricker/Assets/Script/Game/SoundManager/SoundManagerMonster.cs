@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerMonster : MonoBehaviour
+public class SoundManagerMonster : SoundManager
 {
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     public AudioClip audioClipScream1;
     public AudioClip audioClipScream2;
 
-    private float mainVolume;
+    //private float mainVolume;
     public float soundTimeMin;
     public float soundTimeMax;
 
     private bool isScreaming;
 
     // Start is called before the first frame update
-    void Start()
+    protected override 
+        void Start()
     {
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
+        base.Start();
+        //mainVolume = PlayerPrefs.GetFloat("MainVolume");
         isScreaming = false;
     }
 
