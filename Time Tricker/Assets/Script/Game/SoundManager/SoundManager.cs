@@ -21,8 +21,8 @@ public class SoundManager : MonoBehaviour
     }
 
     //given a sound, will play it once
-    public void PlaySound(AudioClip soundClip)
+    public void PlaySound(AudioClip soundClip, float volumeCoef = 1f)
     {
-        audioSource.PlayOneShot(soundClip, mainVolume);
+        audioSource.PlayOneShot(soundClip, mainVolume * volumeCoef);
     }
 }

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Represent the default behaviour of TimeEntities when 
+ * time is affected, they slow down when time is slow down
+ * they speed up when it accelerates...
+ */
 public class BasicTimeManager : TimeManager
 {
     protected TimeEntity timeEntity;
