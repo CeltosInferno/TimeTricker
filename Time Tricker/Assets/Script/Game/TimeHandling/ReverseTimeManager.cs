@@ -18,9 +18,9 @@ public class ReverseTimeManager : TimeManager
     void Start()
     {
         timeEntity = GetComponent<TimeEntity>();
-        if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in BasicTimeManager");
+        if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in ReverseTimeManager");
         anim = GetComponent<Animator>();
-        if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
+        if (anim == null) Debug.LogError("Could not find an Animator in ReverseTimeManager");
     }
 
     void normalReaction(float value)

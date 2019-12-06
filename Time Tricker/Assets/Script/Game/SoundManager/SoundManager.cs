@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    //the "mainVolume"
+    //the "mainVolume", set by the menu
     static protected float mainVolume;
     //what emits the sound
     public AudioSource audioSource;
@@ -13,11 +13,5 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
