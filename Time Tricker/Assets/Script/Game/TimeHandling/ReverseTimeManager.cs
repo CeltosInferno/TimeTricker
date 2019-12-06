@@ -8,6 +8,9 @@ public class ReverseTimeManager : TimeManager
     TimeEntity timeEntity;
     Animator anim;
 
+    public float minSlow = 0.05f;
+    public float maxSpeed = 3f;
+
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
 
@@ -28,11 +31,11 @@ public class ReverseTimeManager : TimeManager
 
     override public void ReactToSpeedUp(float value)
     {
-        normalReaction(1f / value);
+        normalReaction(Mathf.Min(1f / value, maxSpeed));
     }
     public override void ReactToSlowDown(float value)
     {
-        normalReaction(1f / value);
+        normalReaction(Mathf.Max(1f / value, minSlow));
     }
     public override void ReactNormalState()
     {
