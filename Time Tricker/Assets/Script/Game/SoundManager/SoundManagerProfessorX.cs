@@ -45,6 +45,5 @@ public class SoundManagerProfessorX : MonoBehaviour
     public void PlaySoundDead()
     {
         JumpAudioSound.PlayOneShot(deadClip, mainVolume);
-        Debug.Log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
     }
 }

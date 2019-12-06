@@ -7,11 +7,9 @@ public class ReverseTimeManager : TimeManager
 
     TimeEntity timeEntity;
     Animator anim;
-    Rigidbody2D rb;
-    //the default value of the gravity from the RigidBody,
-    //read at the begining, if modified by another script, 
-    //this one needs to be informed
-    float rb_gravityScale;
+
+    public float minSlow = 0.05f;
+    public float maxSpeed = 3f;
 
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
@@ -20,28 +18,24 @@ public class ReverseTimeManager : TimeManager
     void Start()
     {
         timeEntity = GetComponent<TimeEntity>();
-        if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in BasicTimeManager");
+        if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in ReverseTimeManager");
         anim = GetComponent<Animator>();
-        if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
-        rb = GetComponent<Rigidbody2D>();
-        if (rb == null) Debug.LogError("Could not find a Rigidbody2D in BasicTimeManager");
-        else rb_gravityScale = rb.gravityScale;
+        if (anim == null) Debug.LogError("Could not find an Animator in ReverseTimeManager");
     }
 
     void normalReaction(float value)
     {
         if (timeEntity != null) timeEntity.SetTimeScale(value);
         if (anim != null) anim.SetFloat(animatorTimeName, value);
-        if (rb != null) rb.gravityScale = rb_gravityScale * value;
     }
 
     override public void ReactToSpeedUp(float value)
     {
-        normalReaction(2.0f - value);
+        normalReaction(Mathf.Min(1f / value, maxSpeed));
     }
     public override void ReactToSlowDown(float value)
     {
-        normalReaction(2.0f - value);
+        normalReaction(Mathf.Max(1f / value, minSlow));
     }
     public override void ReactNormalState()
     {

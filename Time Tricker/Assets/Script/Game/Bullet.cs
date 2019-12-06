@@ -31,6 +31,7 @@ public class Bullet : TimeEntity
         Debug.Log(collision.gameObject.name);
 
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if(enemy != null)
         {
             GameObject enemyGameObject = collision.gameObject;

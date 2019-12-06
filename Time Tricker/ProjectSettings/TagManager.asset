@@ -9,6 +9,9 @@ TagManager:
   - GameManager
   - TimeZone
   - Enemy
+  - EnergyBars
+  - TimeColorFilter
+  - WaveChrono
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
-  - 
+  - Bullet
+  - Player
   - 
   - 
   - 

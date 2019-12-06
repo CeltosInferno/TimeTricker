@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,12 +13,18 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("LevelBuilding");
     }
 
     public void QuitGame()
     {
         PlayerPrefs.Save();
         Application.Quit();
+    }
+
+    public void SaveScore()
+    {
+        TMP_InputField TMP = GameObject.FindObjectOfType<TMP_InputField>();
+        ScoreData.addScore(ScoreUpdate.getScore(), "Pr." + TMP.text);
     }
 }
