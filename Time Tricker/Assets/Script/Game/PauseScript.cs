@@ -6,14 +6,14 @@ public class PauseScript : MonoBehaviour
 {
     private bool isPaused;
     private float previousScale;
-    private SpriteRenderer Sprite;
     [SerializeField]
-    private GameObject bars;
+    private GameObject[] toDeactivate;
+    [SerializeField]
+    private GameObject[] toActivate;
 
     void Start()
     {
         isPaused = false;
-        Sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -26,14 +26,26 @@ public class PauseScript : MonoBehaviour
             {
                 previousScale = Time.timeScale;
                 Time.timeScale = 0;
-                Sprite.enabled = true;
-                bars.SetActive(true);
+                foreach(GameObject obj in toDeactivate){
+                    obj.SetActive(false);
+                }
+                foreach (GameObject obj in toActivate)
+                {
+                    obj.SetActive(true);
+                }
             }
             else
             {
                 Time.timeScale = previousScale;
-                Sprite.enabled = false;
-                bars.SetActive(false);
+                foreach (GameObject obj in toDeactivate)
+                {
+                    obj.SetActive(true);
+                }
+
+                foreach (GameObject obj in toActivate)
+                {
+                    obj.SetActive(false);
+                }
             }
         }
     }
