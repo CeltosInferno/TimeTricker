@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BasicTimeManager : TimeManager
 {
-    TimeEntity timeEntity;
-    Animator anim;
+    protected TimeEntity timeEntity;
+    protected Animator anim;
 
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
@@ -18,7 +18,7 @@ public class BasicTimeManager : TimeManager
         if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
     }
 
-    void normalReaction(float value)
+    protected void normalReaction(float value)
     {
         if (timeEntity != null) timeEntity.SetTimeScale(value);
         if (anim != null) anim.SetFloat(animatorTimeName, value);

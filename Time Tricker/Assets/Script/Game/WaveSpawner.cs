@@ -132,7 +132,7 @@ public class WaveSpawner : MonoBehaviour
         else
         {
             waveCountdown = Mathf.Max(waveCountdown - Time.deltaTime, 0f);
-            m_chrono.setTimeText(waveCountdown);
+            if(m_chrono) m_chrono.setTimeText(waveCountdown);
         }
     }
 
