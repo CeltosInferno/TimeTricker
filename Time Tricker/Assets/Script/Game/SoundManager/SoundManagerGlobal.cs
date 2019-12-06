@@ -14,6 +14,8 @@ public class SoundManagerGlobal : MonoBehaviour
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
         MusicAudio.clip = MusicClip;
         MusicAudio.volume = mainVolume;
+
+        PlayLevelMusic();
     }
 
     // Update is called once per frame

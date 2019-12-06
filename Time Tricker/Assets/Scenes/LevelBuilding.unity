@@ -1130,6 +1130,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 832682225857093424, guid: f9e688f6e93228245a4c9ad12f31f06b,
+        type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 832682225857093424, guid: f9e688f6e93228245a4c9ad12f31f06b,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyType.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e688f6e93228245a4c9ad12f31f06b, type: 3}
 --- !u!1 &408752905
@@ -4292,6 +4302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378341480}
   - component: {fileID: 1378341479}
+  - component: {fileID: 1378341481}
   m_Layer: 0
   m_Name: MusicSound
   m_TagString: Untagged
@@ -4309,11 +4320,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 31fca126af262c9409435757d7f21804, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4409,6 +4420,20 @@ Transform:
   m_Father: {fileID: 1174692091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378341481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378341478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20b1d342b7a3204385c511f0058c744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicAudio: {fileID: 0}
+  MusicClip: {fileID: 0}
 --- !u!1 &1380248124
 GameObject:
   m_ObjectHideFlags: 0
@@ -18884,6 +18909,41 @@ PrefabInstance:
       propertyPath: moveClip
       value: 
       objectReference: {fileID: 8300000, guid: 4e2b9b5e4fb498040b65ce3d0c5e9534, type: 3}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.20392159
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.42352945
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360702922880661287, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac97ee507a3e4964ab395c20f464faf1, type: 3}
 --- !u!4 &1724749296
