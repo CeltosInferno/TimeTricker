@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerGlobal : MonoBehaviour
 {
-    public AudioSource MusicAudio;
+    public AudioSource audioSource;
     public AudioClip MusicClip;
 
     private float mainVolume;
@@ -12,8 +12,8 @@ public class SoundManagerGlobal : MonoBehaviour
     void Start()
     {
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
-        MusicAudio.clip = MusicClip;
-        MusicAudio.volume = mainVolume;
+        audioSource.clip = MusicClip;
+        audioSource.volume = mainVolume;
 
         PlayLevelMusic();
     }
@@ -21,6 +21,6 @@ public class SoundManagerGlobal : MonoBehaviour
     // Update is called once per frame
     public void PlayLevelMusic()
     {
-        MusicAudio.Play();
+        audioSource.Play();
     }
 }

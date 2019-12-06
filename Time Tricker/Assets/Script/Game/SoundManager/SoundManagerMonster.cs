@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerMonster : MonoBehaviour
 {
-    public AudioSource soundScream;
+    public AudioSource audioSource;
     public AudioClip audioClipScream1;
     public AudioClip audioClipScream2;
 
@@ -33,10 +33,10 @@ public class SoundManagerMonster : MonoBehaviour
             switch (Random.Range(0, 2))
             {
                 case 0:
-                    soundScream.PlayOneShot(audioClipScream1, mainVolume);
+                    audioSource.PlayOneShot(audioClipScream1, mainVolume);
                     break;
                 case 1:
-                    soundScream.PlayOneShot(audioClipScream2, mainVolume);
+                    audioSource.PlayOneShot(audioClipScream2, mainVolume);
                     break;
                 default:
                     Debug.LogError("Monster scream - Error");

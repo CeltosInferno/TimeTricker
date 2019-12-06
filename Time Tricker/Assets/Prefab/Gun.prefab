@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acc0115c5ebc004d8f65306a41d8c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundFire: {fileID: 3928613595133314932}
+  audioSource: {fileID: 3928613595133314932}
   fireClip: {fileID: 8300000, guid: 0c4abb6e905cade4db99e57fe3dde20e, type: 3}
 --- !u!1 &5149263376568378792
 GameObject:

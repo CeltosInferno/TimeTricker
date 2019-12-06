@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerGun : MonoBehaviour
 {
-    public AudioSource soundFire;
+    public AudioSource audioSource;
     public AudioClip fireClip;
 
     private float mainVolume;
@@ -17,6 +17,6 @@ public class SoundManagerGun : MonoBehaviour
     // Update is called once per frame
     public void PlaySound()
     {
-        soundFire.PlayOneShot(fireClip, mainVolume);
+        audioSource.PlayOneShot(fireClip, mainVolume);
     }
 }

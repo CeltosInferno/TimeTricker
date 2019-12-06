@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66da44564630f374ba06e787ca46ee78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundScream: {fileID: 7279753975059560583}
+  audioSource: {fileID: 7279753975059560583}
   audioClipScream1: {fileID: 8300000, guid: 6d1bd6594fff9df4d99c6b33722f146a, type: 3}
   audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
   soundTimeMin: 7
@@ -547,17 +547,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2345246645450853359, guid: 439e593a9e2399c49810c86099486155,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2345246643596908087, guid: 439e593a9e2399c49810c86099486155,
         type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2345246644244883136, guid: 439e593a9e2399c49810c86099486155,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2345246645450853359, guid: 439e593a9e2399c49810c86099486155,
         type: 3}
       propertyPath: m_Layer
       value: 8
