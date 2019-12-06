@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Regroupe les différents checks par rapport au joueur (en l'occurence, on check si le joueur est en état de chute)
 public class PlayerCheck : MonoBehaviour
 {
 

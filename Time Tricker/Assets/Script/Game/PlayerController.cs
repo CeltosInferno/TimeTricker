@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             Move(moveInput);
             Jump(jumpInput);
+
         }
         else
         {
