@@ -23,7 +23,7 @@ public class BasicTimeManager : TimeManager
         anim = GetComponent<Animator>();
         if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
         soundManager = GetComponent<SoundManager>();
-        if (soundManager == null) Debug.LogError("Could not find a SoundManager in BasicTimeManager");
+        //if (soundManager == null) Debug.LogError("Could not find a SoundManager in BasicTimeManager");
         //SetPitch
     }
 

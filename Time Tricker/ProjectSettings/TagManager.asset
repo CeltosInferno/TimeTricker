@@ -12,6 +12,8 @@ TagManager:
   - EnergyBars
   - TimeColorFilter
   - WaveChrono
+  - EnnemyOverlap
+  - WaveCounter
   layers:
   - Default
   - TransparentFX
