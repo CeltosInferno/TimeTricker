@@ -15,51 +15,57 @@ public class IAEnemy : TimeEntity
     public float delayStarMoving;
     public float forceMove;
 
-    private Transform positionPlayer;
-    private float directionMove;
+    protected Transform positionPlayer;
+    protected float directionMove;
     private bool canJump;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
+    protected Animator animator;
     //private Enemy enemyStats;
 
+    public virtual
     void Start()
     {
         positionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         //enemyStats = GetComponent<Enemy>();
         canJump = true;
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual
+        void Update()
     {
         StartCoroutine(DelayMoving());
-        if (GetComponent<Animator>().GetBool("isMoving"))
+        if (animator.GetBool("isMoving"))
         {
             Move();
         }
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         directionMove = positionPlayer.position.x - GetComponent<Transform>().position.x;
         //float minDist = 0.05f;
         if (directionMove < 0)
         {
-            //if (isFacingRight && directionMove < -Mathf.Abs(minDist)) 
-            //    Flip();
-            //transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
-            TimeTranslate(transform, Vector3.left * speed * Time.deltaTime);
-            //rb.AddForce(-transform.right * forceMove, ForceMode2D.Force);
+            MoveDirection(true);
         }
         else if (directionMove > 0)
         {
-            //if (!isFacingRight && directionMove > Mathf.Abs(minDist)) 
-            //    Flip();
-            //transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
-            TimeTranslate(transform, Vector3.right * speed * Time.deltaTime);
-            //rb.AddForce(transform.right * forceMove, ForceMode2D.Force);
+            MoveDirection(false);
         }
+    }
+
+    //move left
+    //else, move right
+    protected void MoveDirection(bool left)
+    {
+        if(left)
+            TimeTranslate(transform, Vector3.left * speed * Time.deltaTime);
+        else
+            TimeTranslate(transform, Vector3.right * speed * Time.deltaTime);
     }
 
     //On déclenche potentiellement un saut à chaque rencontre de bumper si le joueur est en hauteur
@@ -75,19 +81,19 @@ public class IAEnemy : TimeEntity
         }
     }
 
-    private IEnumerator DelayMoving()
+    protected IEnumerator DelayMoving()
     {
         yield return new WaitForSeconds(delayJump);
-        GetComponent<Animator>().SetBool("isMoving", true);
+        animator.SetBool("isMoving", true);
     }
 
-    private IEnumerator DelayJump()
+    protected IEnumerator DelayJump()
     {
         yield return new WaitForSeconds(delayStarMoving);
         canJump = true;
     }
 
-    void Flip()
+    protected void Flip()
     {
         isFacingRight = !isFacingRight;
         /*Vector3 scale = transform.localScale;

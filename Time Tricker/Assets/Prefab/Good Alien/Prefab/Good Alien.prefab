@@ -462,6 +462,8 @@ GameObject:
   - component: {fileID: 5617799622325372630}
   - component: {fileID: 7958659218792614415}
   - component: {fileID: 5921331162963211293}
+  - component: {fileID: 7511766039089712500}
+  - component: {fileID: 7719339373712606443}
   m_Layer: 8
   m_Name: Good Alien
   m_TagString: Enemy
@@ -487,6 +489,7 @@ Transform:
   - {fileID: 4268317847817736}
   - {fileID: 4594187521029120}
   - {fileID: 2342124191519848898}
+  - {fileID: 5344870950513128395}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -533,6 +536,7 @@ MonoBehaviour:
   Hud: {fileID: 160231714652130522, guid: 63bb0ecc9122b274c95ca1439590a8f3, type: 3}
   forceImpactX: 0
   forceImpactY: 0
+  resistanceRate: 1
 --- !u!60 &5683128045501011917
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -621,7 +625,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397275691088322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e491329a40757e44b553ffe5ef2ab5f, type: 3}
   m_Name: 
@@ -631,6 +635,60 @@ MonoBehaviour:
   delayJump: 1
   delayStarMoving: 0
   forceMove: 1
+--- !u!114 &7511766039089712500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397275691088322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e2eaf5ed94e4044985647785b1de26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  forceJump: 1
+  delayJump: 1
+  delayStarMoving: 0
+  forceMove: 1
+  ammunitions:
+  - bulletType: {fileID: 4458669601815913747, guid: dd0c0f5f997a3e7458b8e66d7c4f0536,
+      type: 3}
+    quantity: 5
+    shootRate: 0.5
+  - bulletType: {fileID: 3918900896425390120, guid: 68433478debe0854e8651896c441e96b,
+      type: 3}
+    quantity: 1
+    shootRate: 2
+  reloadSpeed: 1
+  minDistance: 10
+  maxDistance: 20
+  flashFire: {fileID: 911204148517762284, guid: 85a896b933b11af42af198e0bb93c952,
+    type: 3}
+  flashFire2: {fileID: 8489956059376955221, guid: ccc7fdc6832680844bfcd0d56e389fa6,
+    type: 3}
+  flashFire3: {fileID: 659932578357205723, guid: 658300e5e1977c64bbcdf042c33a9217,
+    type: 3}
+  shotPoint: {fileID: 5344870950513128395}
+  fireClip: {fileID: 8300000, guid: 0c4abb6e905cade4db99e57fe3dde20e, type: 3}
+--- !u!114 &7719339373712606443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397275691088322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87b4b2441c038c4bb3b81d7becae5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeMultiplier: 1
+  animatorTimeName: timeSpeed
+  basicNormalTime: -1
+  basicSlowedTime: -1
+  basicSpeededTime: -1
 --- !u!1 &1412190022942676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1547,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.67654705}
   m_EdgeRadius: 0
+--- !u!1 &6409059195971021626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5344870950513128395}
+  m_Layer: 8
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5344870950513128395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409059195971021626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.15, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4414112673633010}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8624215340267146583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1724,7 @@ PrefabInstance:
     - target: {fileID: 5149263376312988202, guid: 0855da25c5730ec4aba8ee57bde13ed2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5149263376312988203, guid: 0855da25c5730ec4aba8ee57bde13ed2,
         type: 3}
@@ -1872,12 +1960,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 439e593a9e2399c49810c86099486155, type: 3}
---- !u!4 &7128842495700808485 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2345246645327274688, guid: 439e593a9e2399c49810c86099486155,
-    type: 3}
-  m_PrefabInstance: {fileID: 4784301781399900645}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7128842495700808484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2345246645327274689, guid: 439e593a9e2399c49810c86099486155,
@@ -1890,6 +1972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7caa11b62ada74397da5900a0d6d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7128842495700808485 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2345246645327274688, guid: 439e593a9e2399c49810c86099486155,
+    type: 3}
+  m_PrefabInstance: {fileID: 4784301781399900645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!74 &74022799637872568
 AnimationClip:
   m_ObjectHideFlags: 0
