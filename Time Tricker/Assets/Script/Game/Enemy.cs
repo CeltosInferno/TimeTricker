@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float delayShowHealthBar = 2f;
 
     public float dommage;
+    public int scoreOnDeath = 1;
 
     public GameObject Hud;
 
@@ -82,6 +83,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        GameObject.FindObjectOfType<ScoreUpdate>().addScore(scoreOnDeath);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

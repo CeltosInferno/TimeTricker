@@ -13,12 +13,16 @@ public abstract class TimeEntity : MonoBehaviour
     protected float m_timeScale = 1f;
 
     private Rigidbody2D m_rb;
-    void Start()
+
+    public virtual
+        void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
     }
     public void SetTimeScale(float value)
     {
+        if (value <= 0f)
+            value = 0.000001f;
         float old_timeScale = m_timeScale;
         m_timeScale = value;
         if (m_rb)
@@ -40,7 +44,7 @@ public abstract class TimeEntity : MonoBehaviour
 
     public void TimeAddForce(Rigidbody2D rb, Vector2 force, ForceMode2D mode)
     {
-        rb.AddForce(force * Mathf.Sqrt(m_timeScale), mode);
+        rb.AddForce(force * m_timeScale, mode);
     }
 
 }

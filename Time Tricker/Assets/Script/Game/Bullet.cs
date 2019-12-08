@@ -17,15 +17,17 @@ public class Bullet : TimeEntity
 
     public int bulletDamage = 20;
     // Start is called before the first frame update
-    void Start()
+    public override
+        void Start()
     {
-        Invoke("DestroyProjectile", (float)lifetime * m_timeScale *Time.deltaTime / Time.unscaledDeltaTime);
+        base.Start();
+        Invoke("DestroyProjectile", (float)lifetime * m_timeScale);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * speed * m_timeScale * Time.unscaledDeltaTime);
+        TimeTranslate(transform, Vector2.right * speed * Time.deltaTime);
     }
 
     virtual protected 
