@@ -172,6 +172,7 @@ public class IAEnemyShooter : IAEnemy
             shotPoint.position,
             rotation);
         currentAmmoQuantity -= 1;
+        animator.SetTrigger("isFiring");
         switch (Random.Range(0, 3))
         {
             case 0:
