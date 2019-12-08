@@ -9,6 +9,7 @@ public class SoundManagerGlobal : SoundManager
 {
     //public AudioSource audioSource;
     public AudioClip MusicClip;
+    public AudioClip StartWaveClip;
 
     //private float mainVolume;
 
@@ -27,5 +28,10 @@ public class SoundManagerGlobal : SoundManager
     public void PlayLevelMusic()
     {
         audioSource.Play();
+    }
+
+    public void NewWaveMusic()
+    {
+        audioSource.PlayOneShot(StartWaveClip, mainVolume+2);
     }
 }

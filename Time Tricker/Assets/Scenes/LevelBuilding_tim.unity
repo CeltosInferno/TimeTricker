@@ -1340,6 +1340,7 @@ GameObject:
   - component: {fileID: 372590988}
   - component: {fileID: 372590987}
   - component: {fileID: 372590986}
+  - component: {fileID: 372590991}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1361,6 +1362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1731683209}
   MusicClip: {fileID: 8300000, guid: 31fca126af262c9409435757d7f21804, type: 3}
+  StartWaveClip: {fileID: 8300000, guid: 0f00d287a9c34e544a76252ce44c51e6, type: 3}
 --- !u!114 &372590987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1463,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372590991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372590985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80381662a9018a34a84a2a965ce81018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VirtualCamera: {fileID: 408752906}
 --- !u!1 &408752905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2337,7 @@ GameObject:
   - component: {fileID: 1013648375}
   - component: {fileID: 1013648377}
   - component: {fileID: 1013648376}
+  - component: {fileID: 1013648378}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2396,6 +2412,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1013648378
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013648374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1051628494
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,12 +131,16 @@ public class WaveSpawner : MonoBehaviour
     //the next wave starts
     public void CountingForNextWave()
     {
+        //If countdown is over, we play the new wave music and start the monster spawns
         if (waveCountdown <= 0)
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SoundManagerGlobal>().NewWaveMusic();
+            StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));
         }
         else
-        {
+        {        
+
             waveCountdown = Mathf.Max(waveCountdown - Time.deltaTime, 0f);
             if (m_chrono) { 
                 m_chrono.setTimeText(waveCountdown);
