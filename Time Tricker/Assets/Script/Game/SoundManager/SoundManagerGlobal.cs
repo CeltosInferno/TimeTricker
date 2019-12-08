@@ -6,6 +6,7 @@ public class SoundManagerGlobal : MonoBehaviour
 {
     public AudioSource MusicAudio;
     public AudioClip MusicClip;
+    public AudioClip StartWaveClip;
 
     private float mainVolume;
 
@@ -22,5 +23,10 @@ public class SoundManagerGlobal : MonoBehaviour
     public void PlayLevelMusic()
     {
         MusicAudio.Play();
+    }
+
+    public void NewWaveMusic()
+    {
+        MusicAudio.PlayOneShot(StartWaveClip, mainVolume+2);
     }
 }
