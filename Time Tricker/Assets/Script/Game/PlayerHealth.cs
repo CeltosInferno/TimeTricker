@@ -92,12 +92,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void RestoreHealth()
-    {
-        health = maxHealth;
-        UpdateHealth(0);
-    }
-
     /**
      * Manage death player
      * <returns>Void</returns>

@@ -73,6 +73,7 @@ public class WaveSpawner : MonoBehaviour
     private Chrono m_chrono;
     private WaveCounter m_waveCounter;
     private ScoreUpdate su;
+    private bool nextWaveStart = false;
 
     private void Start()
     {
@@ -138,6 +139,7 @@ public class WaveSpawner : MonoBehaviour
             GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
             
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SoundManagerGlobal>().NewWaveMusic();
+            nextWaveStart = false;
             StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));
         }
@@ -145,8 +147,18 @@ public class WaveSpawner : MonoBehaviour
         {        
 
             waveCountdown = Mathf.Max(waveCountdown - Time.deltaTime, 0f);
-            if (m_chrono) { 
-                m_chrono.setTimeText(waveCountdown);
+            
+            if (m_chrono) {
+                if (waveCountdown > timeBetweenWaves && !nextWaveStart && !EnemyIsAlive())
+                {
+                    waveCountdown = timeBetweenWaves;
+                    nextWaveStart = true;
+                }
+                else
+                {
+                    m_chrono.setTimeText(waveCountdown);
+                }
+                
                 //when the chrono is close to 0
                 if (waveCountdown < 5f) m_chrono.AlertMode();
             }
