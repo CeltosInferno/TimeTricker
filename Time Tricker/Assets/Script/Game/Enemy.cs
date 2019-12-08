@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Represent a generic enemy with statistics and health
+ */
 public class Enemy : MonoBehaviour
 {
     public float health;

@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 8133698043228631614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.501, y: -1.304, z: 0}
-  m_LocalScale: {x: 7, y: 9, z: 1}
+  m_LocalScale: {x: -7, y: 9, z: 1}
   m_Children:
   - {fileID: 4170612328510965529}
   - {fileID: 2394756253057851551}
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 1
+  animatorTimeName: timeSpeed
   minSlow: 0.05
   maxSpeed: 3
-  animatorTimeName: timeSpeed
 --- !u!1001 &1831558451208807897
 PrefabInstance:
   m_ObjectHideFlags: 0

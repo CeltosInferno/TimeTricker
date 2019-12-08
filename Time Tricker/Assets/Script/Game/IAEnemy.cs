@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Represent the behaviour of a basic enemy :
+ * it follows the player and jumps
+ */
 public class IAEnemy : TimeEntity
 {
     public float speed;
@@ -13,6 +18,7 @@ public class IAEnemy : TimeEntity
     private Transform positionPlayer;
     private float directionMove;
     private bool canJump;
+    private bool isFacingRight = true;
     private Rigidbody2D rb;
 
     void Start()
@@ -37,12 +43,14 @@ public class IAEnemy : TimeEntity
         directionMove = positionPlayer.position.x - GetComponent<Transform>().position.x;
         if (directionMove < 0)
         {
+            if (isFacingRight) Flip();
             //transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
             TimeTranslate(transform, Vector3.left * speed * Time.deltaTime);
             //rb.AddForce(-transform.right * forceMove, ForceMode2D.Force);
         }
         else
         {
+            if (!isFacingRight) Flip();
             //transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
             TimeTranslate(transform, Vector3.right * speed * Time.deltaTime);
             //rb.AddForce(transform.right * forceMove, ForceMode2D.Force);
@@ -72,5 +80,13 @@ public class IAEnemy : TimeEntity
     {
         yield return new WaitForSeconds(delayStarMoving);
         canJump = true;
+    }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
