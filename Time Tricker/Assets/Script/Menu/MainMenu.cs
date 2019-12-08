@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelBuilding");
+        SceneManager.LoadScene("LevelBuilding_laura");
     }
 
     public void QuitGame()
