@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float delayShowHealthBar = 2f;
 
     public float dommage;
+    public int scoreOnDeath = 100;
 
     public GameObject Hud;
 
@@ -27,10 +28,7 @@ public class Enemy : MonoBehaviour
     //multiply the damage taken by the enemy
     public float resistanceRate = 1f;
 
-    public int scoreValue = 100;
-
     protected SoundManagerMonster soundManager;
-    private ScoreUpdate su;
 
     public float getMaxHealth() {
         return maxHealth;
@@ -38,7 +36,6 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        su = GameObject.FindObjectOfType<ScoreUpdate>();
         maxHealth = health;
         healthBar.GetComponent<Transform>().localScale = new Vector3(0.0f, 0.0f);
         soundManager = GetComponent<SoundManagerMonster>();
@@ -86,7 +83,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        su.addScore(scoreValue);
+        GameObject.FindObjectOfType<ScoreUpdate>().addScore(scoreOnDeath);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

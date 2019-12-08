@@ -23,7 +23,7 @@ public class IAEnemy : TimeEntity
     protected Animator animator;
     //private Enemy enemyStats;
 
-    public virtual
+    public override
     void Start()
     {
         positionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
