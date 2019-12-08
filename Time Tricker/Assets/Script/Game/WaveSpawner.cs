@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour
         //gives a time until the next wave is to be computed
         //if 0f, uses th default value from "timeBetweenWaves" 
         public float timeToHandle = 0f;
-        public int scoreOnFinished = 5;
+        public int scoreOnFinished = 1500;
     }
 
     public Wave[] waves;
