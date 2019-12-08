@@ -7,7 +7,7 @@ public class CameraFlashAndShake : MonoBehaviour
 {
     //Contient une fonction de coroutine ajoutant un flash et un effet de shake à la caméra lors du début d'une vague
 
-    private float ShakeElapsedTime = 0f;
+    //private float ShakeElapsedTime = 0f;
 
     // Cinemachine Shake
     public CinemachineVirtualCamera VirtualCamera;

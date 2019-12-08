@@ -32,6 +32,6 @@ public class SoundManagerGlobal : SoundManager
 
     public void NewWaveMusic()
     {
-        MusicAudio.PlayOneShot(StartWaveClip, mainVolume+2);
+        audioSource.PlayOneShot(StartWaveClip, mainVolume+2);
     }
 }
