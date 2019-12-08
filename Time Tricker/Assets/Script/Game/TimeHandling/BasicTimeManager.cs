@@ -16,7 +16,14 @@ public class BasicTimeManager : TimeManager
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
 
-    void Start()
+    //setting theses values above 0 allows to fix
+    //a reaction to a time change
+    public float basicNormalTime = -1f;
+    public float basicSlowedTime = -1f;
+    public float basicSpeededTime = -1f;
+
+    protected virtual
+        void Start()
     {
         timeEntity = GetComponent<TimeEntity>();
         if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in BasicTimeManager");
@@ -27,24 +34,33 @@ public class BasicTimeManager : TimeManager
         //SetPitch
     }
 
-    protected void normalReaction(float value)
+    protected virtual void normalReaction(float value)
     {
         if (timeEntity) timeEntity.SetTimeScale(value);
         if (anim) anim.SetFloat(animatorTimeName, value);
         if (soundManager) soundManager.SetPitch(value);
     }
 
-    override public void ReactToSpeedUp(float value)
+    public override void ReactToSpeedUp(float value)
     {
-        normalReaction(value);
+        if (basicSpeededTime >= 0)
+            normalReaction(basicSpeededTime);
+        else
+            normalReaction(value);
     }
     public override void ReactToSlowDown(float value)
     {
-        normalReaction(value);
+        if (basicSlowedTime >= 0)
+            normalReaction(basicSlowedTime);
+        else
+            normalReaction(value);
     }
     public override void ReactNormalState()
     {
-        normalReaction(1f);
+        if (basicNormalTime >= 0)
+            normalReaction(basicNormalTime);
+        else
+            normalReaction(1f);
     }
 
     public override void _Update()

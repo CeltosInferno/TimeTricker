@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
     public float forceImpactX;
     public float forceImpactY;
 
+    //multiply the damage taken by the enemy
+    public float resistanceRate = 1f;
+
+    public float getMaxHealth() {
+        return maxHealth;
+    }
 
     private void Start()
     {
@@ -44,17 +50,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDommage(int dommage)
+    public void TakeDommage(float damageTaken)
     {
-        Debug.Log("Enemy hit" + dommage);
+        float damage = damageTaken;
+        if (damageTaken > 0) {
+            damage *= resistanceRate;
+        }
+        Debug.Log("Enemy hit" + damage);
 
-        GetComponent<Animator>().SetTrigger("isTakingDamage");
+        if (damage != 0f)
+        {
+            GetComponent<Animator>().SetTrigger("isTakingDamage");
 
-        health -= dommage;
-        healthBar.SetSize(health / maxHealth);
+            health = Mathf.Min(health - damage, maxHealth);
+            healthBar.SetSize(health / maxHealth);
 
-        StartCoroutine(ShowHealthBar());
-
+            StartCoroutine(ShowHealthBar());
+        }
         if (health <= 0)
         {
             Die();
