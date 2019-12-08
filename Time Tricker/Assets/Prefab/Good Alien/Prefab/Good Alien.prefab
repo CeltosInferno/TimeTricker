@@ -461,7 +461,6 @@ GameObject:
   - component: {fileID: 5683128045501011917}
   - component: {fileID: 5617799622325372630}
   - component: {fileID: 7958659218792614415}
-  - component: {fileID: 5921331162963211293}
   - component: {fileID: 7511766039089712500}
   - component: {fileID: 7719339373712606443}
   m_Layer: 8
@@ -618,23 +617,6 @@ MonoBehaviour:
   audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
   soundTimeMin: 7
   soundTimeMax: 12
---- !u!114 &5921331162963211293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397275691088322}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e491329a40757e44b553ffe5ef2ab5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  forceJump: 1
-  delayJump: 1
-  delayStarMoving: 0
-  forceMove: 1
 --- !u!114 &7511766039089712500
 MonoBehaviour:
   m_ObjectHideFlags: 0
