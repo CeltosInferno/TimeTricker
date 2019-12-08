@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool gameHasEnded;
     public bool gameHasWon;
 
+    private string menuSceneName = "Menu";
+
     private void Start()
     {
         gameHasEnded = false;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
         //return to main menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(menuSceneName);// SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
     public void EndGame()

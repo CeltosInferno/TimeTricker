@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f434974f2fd3b548814bddd6eddfb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpAudioSound: {fileID: 1866509523620435023}
+  audioSource: {fileID: 1866509523620435023}
   MoveAudioSound: {fileID: 5557784102729359150}
   jumpClip: {fileID: 8300000, guid: f053c9324879bb54b8451351de81e5a8, type: 3}
   moveClip: {fileID: 8300000, guid: 4e2b9b5e4fb498040b65ce3d0c5e9534, type: 3}

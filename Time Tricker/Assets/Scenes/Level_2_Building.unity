@@ -3866,7 +3866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20b1d342b7a3204385c511f0058c744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicAudio: {fileID: 1378341479}
+  audioSource: {fileID: 1378341479}
   MusicClip: {fileID: 8300000, guid: 31fca126af262c9409435757d7f21804, type: 3}
 --- !u!1001 &1164000346
 PrefabInstance:
@@ -4232,7 +4232,6 @@ MonoBehaviour:
   armorBar: {fileID: 1041928029}
   armor: 100
   percentageArmorPenetration: 0.1
-  player: {fileID: 1377795591}
   invincibilityTime: 1
 --- !u!1 &1377795591 stripped
 GameObject:
@@ -18834,16 +18833,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
-        type: 3}
-      propertyPath: energyBars
-      value: 
-      objectReference: {fileID: 2020671665}
-    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
-        type: 3}
-      propertyPath: backgroundRenderer
-      value: 
-      objectReference: {fileID: 799751086}
     - target: {fileID: 6670362014462706419, guid: ac97ee507a3e4964ab395c20f464faf1,
         type: 3}
       propertyPath: speed
@@ -18859,21 +18848,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 252873263645081815, guid: ac97ee507a3e4964ab395c20f464faf1,
+    - target: {fileID: 909006598653054653, guid: ac97ee507a3e4964ab395c20f464faf1,
         type: 3}
-      propertyPath: m_Offset.x
-      value: -0.030865401
-      objectReference: {fileID: 0}
-    - target: {fileID: 252873263645081815, guid: ac97ee507a3e4964ab395c20f464faf1,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.7652175
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238968413771344260, guid: ac97ee507a3e4964ab395c20f464faf1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: moveClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e2b9b5e4fb498040b65ce3d0c5e9534, type: 3}
     - target: {fileID: 5557784102729359150, guid: ac97ee507a3e4964ab395c20f464faf1,
         type: 3}
       propertyPath: m_Pitch
@@ -18884,11 +18863,31 @@ PrefabInstance:
       propertyPath: BypassListenerEffects
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 909006598653054653, guid: ac97ee507a3e4964ab395c20f464faf1,
+    - target: {fileID: 252873263645081815, guid: ac97ee507a3e4964ab395c20f464faf1,
         type: 3}
-      propertyPath: moveClip
+      propertyPath: m_Offset.x
+      value: -0.030865401
+      objectReference: {fileID: 0}
+    - target: {fileID: 252873263645081815, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.7652175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: energyBars
       value: 
-      objectReference: {fileID: 8300000, guid: 4e2b9b5e4fb498040b65ce3d0c5e9534, type: 3}
+      objectReference: {fileID: 2020671665}
+    - target: {fileID: 3442635970207838562, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: backgroundRenderer
+      value: 
+      objectReference: {fileID: 799751086}
+    - target: {fileID: 3238968413771344260, guid: ac97ee507a3e4964ab395c20f464faf1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac97ee507a3e4964ab395c20f464faf1, type: 3}
 --- !u!4 &1724749296

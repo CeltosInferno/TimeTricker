@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Represent the default behaviour of TimeEntities when 
+ * time is affected, they slow down when time is slow down
+ * they speed up when it accelerates...
+ */
 public class BasicTimeManager : TimeManager
 {
-    TimeEntity timeEntity;
-    Animator anim;
+    protected TimeEntity timeEntity;
+    protected Animator anim;
+    protected SoundManager soundManager;
 
     //the name of the value that defines the speed of the Animator
     public string animatorTimeName = "timeSpeed";
@@ -16,12 +22,16 @@ public class BasicTimeManager : TimeManager
         if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in BasicTimeManager");
         anim = GetComponent<Animator>();
         if (anim == null) Debug.LogError("Could not find an Animator in BasicTimeManager");
+        soundManager = GetComponent<SoundManager>();
+        //if (soundManager == null) Debug.LogError("Could not find a SoundManager in BasicTimeManager");
+        //SetPitch
     }
 
-    void normalReaction(float value)
+    protected void normalReaction(float value)
     {
-        if (timeEntity != null) timeEntity.SetTimeScale(value);
-        if (anim != null) anim.SetFloat(animatorTimeName, value);
+        if (timeEntity) timeEntity.SetTimeScale(value);
+        if (anim) anim.SetFloat(animatorTimeName, value);
+        if (soundManager) soundManager.SetPitch(value);
     }
 
     override public void ReactToSpeedUp(float value)

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerGun : MonoBehaviour
+public class SoundManagerGun : SoundManager
 {
-    public AudioSource soundFire;
+    //public AudioSource audioSource;
     public AudioClip fireClip;
 
-    private float mainVolume;
+    //private float mainVolume;
 
-    void Start()
-    {
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
-    }
+    //void Start()
+    //{
+    //    mainVolume = PlayerPrefs.GetFloat("MainVolume");
+    //}
 
     // Update is called once per frame
     public void PlaySound()
     {
-        soundFire.PlayOneShot(fireClip, mainVolume);
+        audioSource.PlayOneShot(fireClip, mainVolume);
     }
 }
