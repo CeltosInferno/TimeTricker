@@ -127,6 +127,9 @@ public class WaveSpawner : MonoBehaviour
     {
         if (waveCountdown <= 0)
         {
+            Debug.Log(" Salut mon pote !");
+
+            StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));
         }
         else
