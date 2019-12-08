@@ -643,6 +643,10 @@ MonoBehaviour:
       type: 3}
     quantity: 1
     shootRate: 2
+  - bulletType: {fileID: 3918900896425390120, guid: 68433478debe0854e8651896c441e96b,
+      type: 3}
+    quantity: 4
+    shootRate: 0.3
   reloadSpeed: 1
   minDistance: 10
   maxDistance: 20

@@ -60,7 +60,8 @@ public class Enemy : MonoBehaviour
 
         if (damage != 0f)
         {
-            GetComponent<Animator>().SetTrigger("isTakingDamage");
+            if(damage > 0f)
+                GetComponent<Animator>().SetTrigger("isTakingDamage");
 
             health = Mathf.Min(health - damage, maxHealth);
             healthBar.SetSize(health / maxHealth);

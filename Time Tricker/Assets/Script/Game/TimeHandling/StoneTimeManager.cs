@@ -22,7 +22,7 @@ public class StoneTimeManager : BasicTimeManager
     {
         base.Start();
         m_enemy = GetComponent<Enemy>();
-        basicNormalTime = 0f;
+        //basicNormalTime = 0f;
         baseColors = new Color[sprites.Length];
         for (int i = 0; i < sprites.Length; ++i)
             baseColors[i] = sprites[i].color;
@@ -47,10 +47,5 @@ public class StoneTimeManager : BasicTimeManager
             }
         }
         base.normalReaction(value);
-    }
-
-    public override void ReactNormalState()
-    {
-        base.ReactNormalState();
     }
 }
