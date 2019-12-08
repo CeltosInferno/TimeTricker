@@ -1387,8 +1387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2160370917273774937}
-  audioClipScream1: {fileID: 8300000, guid: 6d1bd6594fff9df4d99c6b33722f146a, type: 3}
-  audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
+  audioClipScream1: {fileID: 8300000, guid: 626d5d267c694de44b208ae4316c1e0e, type: 3}
+  audioClipScream2: {fileID: 8300000, guid: 626d5d267c694de44b208ae4316c1e0e, type: 3}
+  audioClipHurt: {fileID: 0}
   soundTimeMin: 7
   soundTimeMax: 12
 --- !u!50 &604797580314547901

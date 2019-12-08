@@ -429,8 +429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 3578892716469919649}
-  audioClipScream1: {fileID: 8300000, guid: 6d1bd6594fff9df4d99c6b33722f146a, type: 3}
-  audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
+  audioClipScream1: {fileID: 8300000, guid: 626d5d267c694de44b208ae4316c1e0e, type: 3}
+  audioClipScream2: {fileID: 8300000, guid: 626d5d267c694de44b208ae4316c1e0e, type: 3}
+  audioClipHurt: {fileID: 0}
   soundTimeMin: 7
   soundTimeMax: 12
 --- !u!50 &2609068664178483781
@@ -536,6 +537,7 @@ MonoBehaviour:
   Hud: {fileID: 0}
   forceImpactX: 0.75
   forceImpactY: 1
+  resistanceRate: 1
 --- !u!114 &701661047260794701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +552,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeMultiplier: 1
   animatorTimeName: timeSpeed
+  basicNormalTime: -1
+  basicSlowedTime: -1
+  basicSpeededTime: -1
 --- !u!1 &1189439410486250
 GameObject:
   m_ObjectHideFlags: 0

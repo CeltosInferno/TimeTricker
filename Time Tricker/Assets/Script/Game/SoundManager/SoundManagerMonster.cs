@@ -8,6 +8,8 @@ public class SoundManagerMonster : SoundManager
     public AudioClip audioClipScream1;
     public AudioClip audioClipScream2;
 
+    public AudioClip audioClipHurt = null;
+
     //private float mainVolume;
     public float soundTimeMin;
     public float soundTimeMax;
@@ -21,6 +23,12 @@ public class SoundManagerMonster : SoundManager
         base.Start();
         //mainVolume = PlayerPrefs.GetFloat("MainVolume");
         isScreaming = false;
+    }
+
+    public void playSoundHurt()
+    {
+        if(audioClipHurt)
+            audioSource.PlayOneShot(audioClipHurt, mainVolume);
     }
 
     public IEnumerator Scream()

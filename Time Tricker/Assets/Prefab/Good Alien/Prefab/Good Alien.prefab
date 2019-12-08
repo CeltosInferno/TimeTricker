@@ -525,7 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   delayDommageEffect: 1
-  deathEffect: {fileID: 4648343048722887839, guid: e297d3cbb64271244a41d6a2547ad265,
+  deathEffect: {fileID: 8954324937314712432, guid: f3848754ba179d24488c9a1327a17cdb,
     type: 3}
   healthBar: {fileID: 7128842495700808484}
   localScaleX: 0.1
@@ -613,8 +613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2085504808833640174}
-  audioClipScream1: {fileID: 8300000, guid: 6d1bd6594fff9df4d99c6b33722f146a, type: 3}
-  audioClipScream2: {fileID: 8300000, guid: eaf1ee38935bb5c4681b11b0900ba36d, type: 3}
+  audioClipScream1: {fileID: 8300000, guid: 2cb1f839e363e6246be32e8eaa8698eb, type: 3}
+  audioClipScream2: {fileID: 8300000, guid: 2cb1f839e363e6246be32e8eaa8698eb, type: 3}
+  audioClipHurt: {fileID: 8300000, guid: 2f196ca54c1a20a4786c7141585e60e8, type: 3}
   soundTimeMin: 7
   soundTimeMax: 12
 --- !u!114 &7511766039089712500

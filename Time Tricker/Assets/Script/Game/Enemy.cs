@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
     //multiply the damage taken by the enemy
     public float resistanceRate = 1f;
 
+    protected SoundManagerMonster soundManager;
+
     public float getMaxHealth() {
         return maxHealth;
     }
@@ -34,11 +36,12 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         maxHealth = health;
-        healthBar.GetComponent<Transform>().localScale = new Vector3(0.0f, 0.0f);   
+        healthBar.GetComponent<Transform>().localScale = new Vector3(0.0f, 0.0f);
+        soundManager = GetComponent<SoundManagerMonster>();
     }
     public void Update()
     {
-        StartCoroutine(GetComponent<SoundManagerMonster>().Scream());
+        StartCoroutine(soundManager.Scream());
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -60,9 +63,12 @@ public class Enemy : MonoBehaviour
 
         if (damage != 0f)
         {
-            if(damage > 0f)
+            if (damage > 0f)
+            {
+                if (Random.Range(0, 3) == 0) 
+                    soundManager.playSoundHurt();
                 GetComponent<Animator>().SetTrigger("isTakingDamage");
-
+            }
             health = Mathf.Min(health - damage, maxHealth);
             healthBar.SetSize(health / maxHealth);
 
