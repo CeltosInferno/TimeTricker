@@ -67,8 +67,11 @@ public class WaveSpawner : MonoBehaviour
 
     public WaveWaitMode waveWait = WaveWaitMode.LASTSPAWN;
 
+    //will keep track of the id of the wave
+    int waveCount = 0;
     //used in order to display the time unti next wave
     private Chrono m_chrono;
+    private WaveCounter m_waveCounter;
     private ScoreUpdate su;
 
     private void Start()
@@ -78,6 +81,9 @@ public class WaveSpawner : MonoBehaviour
         m_chrono = GameObject.FindGameObjectWithTag("WaveChrono").GetComponent<Chrono>();
         if (m_chrono == null)
             Debug.LogError("Could not find any Chrono object with tag \"Chrono\" in script WaveSpawner.cs");
+        m_waveCounter = GameObject.FindGameObjectWithTag("WaveCounter").GetComponent<WaveCounter>();
+        if (m_waveCounter == null)
+            Debug.LogError("Could not find any WaveCounter object with tag \"WaveCounter\" in script WaveSpawner.cs");
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("Pas de points de spawn");
@@ -125,14 +131,25 @@ public class WaveSpawner : MonoBehaviour
     //the next wave starts
     public void CountingForNextWave()
     {
+        //If countdown is over, we play the new wave music and start the monster spawns
         if (waveCountdown <= 0)
         {
+            //the player is healed at the end of the wave
+            GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
+            
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SoundManagerGlobal>().NewWaveMusic();
+            StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));
         }
         else
-        {
+        {        
+
             waveCountdown = Mathf.Max(waveCountdown - Time.deltaTime, 0f);
-            m_chrono.setTimeText(waveCountdown);
+            if (m_chrono) { 
+                m_chrono.setTimeText(waveCountdown);
+                //when the chrono is close to 0
+                if (waveCountdown < 5f) m_chrono.AlertMode();
+            }
         }
     }
 
@@ -154,7 +171,9 @@ public class WaveSpawner : MonoBehaviour
         if (current.timeToHandle > 0f)
             waveCountdown = current.timeToHandle;
         else
+        {
             waveCountdown = timeBetweenWaves;
+        }
 
         //if last wave we display the end
         if(isLastWave())
@@ -190,6 +209,8 @@ public class WaveSpawner : MonoBehaviour
     {
         Debug.Log("Spwaning wave : " + p_wave.name);
         state = SpawnState.SPAWNING;
+        if (m_chrono)  m_chrono.SpawningMode();
+        if (m_waveCounter)  m_waveCounter.SetWaveValue(++waveCount);
 
         for(int enemyTypeIndex = 0; enemyTypeIndex < p_wave.enemyType.Length; enemyTypeIndex++)
         {
@@ -200,6 +221,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
+        if (m_chrono)  m_chrono.DefaultMode();
         state = SpawnState.WAITING;
         yield break;
     }

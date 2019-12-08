@@ -7,16 +7,10 @@ using UnityEngine;
  * a value
  * It does not update the time on its own !
  */
-public class Chrono : MonoBehaviour
+public class Chrono : TextMeshProGuiBip
 {
-    private TMPro.TextMeshProUGUI timerText;
-
-    public void Start()
-    {
-        timerText = GetComponent<TMPro.TextMeshProUGUI>();
-        if(timerText == null) 
-            Debug.LogError("Could not find any TextMeshProUGUI with tag \"Chrono\" in script Chrono.cs");
-    }
+    public Color alertColor = Color.red;
+    public Color spawningColor = Color.yellow;
 
     //value in seconds
     public void setTimeText(float value)
@@ -24,11 +18,25 @@ public class Chrono : MonoBehaviour
         System.TimeSpan time = System.TimeSpan.FromSeconds((double) value);
         //string minutes = (value / 60f).ToString("d2");
         //string seconds = (value % 60f).ToString("d2");
-        timerText.text = time.ToString("mm':'ss");
+        textMeshPro.text = time.ToString("mm':'ss");
     }
 
-    public void setTextColor(Color col)
+    public void AlertMode()
     {
+        bippingFrequency = 2f;
+        setBippingColor(alertColor);
+        setBip(true);
+    }
 
+    public void SpawningMode()
+    {
+        bippingFrequency = 1f;
+        setBippingColor(spawningColor);
+        setBip(true);
+    }
+
+    public void DefaultMode()
+    {
+        setBip(false);
     }
 }

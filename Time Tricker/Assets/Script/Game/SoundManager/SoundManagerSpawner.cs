@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManagerSpawner : MonoBehaviour
+public class SoundManagerSpawner : SoundManager
 {
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     public AudioClip audioClipSpawn;
 
-    private float mainVolume;
+    //private float mainVolume;
 
-    private bool isScreaming;
+    //private bool isScreaming;
 
     // Start is called before the first frame update
-    void Start()
+    /*protected override
+        void Start()
     {
         mainVolume = PlayerPrefs.GetFloat("MainVolume");
-    }
+    }*/
 
     public void PlaySpawn()
     {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Represent a generic enemy with statistics and health
+ */
 public class Enemy : MonoBehaviour
 {
     public float health;
@@ -21,15 +24,24 @@ public class Enemy : MonoBehaviour
     public float forceImpactX;
     public float forceImpactY;
 
+    //multiply the damage taken by the enemy
+    public float resistanceRate = 1f;
+
+    protected SoundManagerMonster soundManager;
+
+    public float getMaxHealth() {
+        return maxHealth;
+    }
 
     private void Start()
     {
         maxHealth = health;
-        healthBar.GetComponent<Transform>().localScale = new Vector3(0.0f, 0.0f);   
+        healthBar.GetComponent<Transform>().localScale = new Vector3(0.0f, 0.0f);
+        soundManager = GetComponent<SoundManagerMonster>();
     }
     public void Update()
     {
-        StartCoroutine(GetComponent<SoundManagerMonster>().Scream());
+        StartCoroutine(soundManager.Scream());
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -41,17 +53,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDommage(int dommage)
+    public void TakeDommage(float damageTaken)
     {
-        Debug.Log("Enemy hit" + dommage);
+        float damage = damageTaken;
+        if (damageTaken > 0) {
+            damage *= resistanceRate;
+        }
+        Debug.Log("Enemy hit" + damage);
 
-        GetComponent<Animator>().SetTrigger("isTakingDamage");
+        if (damage != 0f)
+        {
+            if (damage > 0f)
+            {
+                if (Random.Range(0, 3) == 0) 
+                    soundManager.playSoundHurt();
+                GetComponent<Animator>().SetTrigger("isTakingDamage");
+            }
+            health = Mathf.Min(health - damage, maxHealth);
+            healthBar.SetSize(health / maxHealth);
 
-        health -= dommage;
-        healthBar.SetSize(health / maxHealth);
-
-        StartCoroutine(ShowHealthBar());
-
+            StartCoroutine(ShowHealthBar());
+        }
         if (health <= 0)
         {
             Die();

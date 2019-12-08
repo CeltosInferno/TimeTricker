@@ -459,9 +459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeMultiplier: 1
+  animatorTimeName: timeSpeed
   minSlow: 0.05
   maxSpeed: 3
-  animatorTimeName: timeSpeed
 --- !u!1001 &1831558451208807897
 PrefabInstance:
   m_ObjectHideFlags: 0

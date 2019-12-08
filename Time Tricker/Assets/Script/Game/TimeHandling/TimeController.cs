@@ -34,16 +34,14 @@ public class TimeController : MonoBehaviour
     public AudioClip soundSlowDown;
     public AudioClip soundSpeedUp;
 
-    private AudioSource soundPlayer;
-    private float mainVolume;
+    private SoundManager soundManager;
+    private float volumeCoef = 3f;
 
     private void Awake()
     {
-        soundPlayer = GetComponent<AudioSource>();
-        mainVolume = PlayerPrefs.GetFloat("MainVolume");
+        soundManager = GetComponent<SoundManager>();
         energyBars = GameObject.FindGameObjectWithTag("EnergyBars").GetComponent<EnergyBars>();
         backgroundRenderer = GameObject.FindGameObjectWithTag("TimeColorFilter").GetComponent<ColorChanger>();
-        mainVolume *= 3;
     }
 
     // Start is called before the first frame update
@@ -82,12 +80,12 @@ public class TimeController : MonoBehaviour
 
     void playSpeedUpSound()
     {
-        soundPlayer.PlayOneShot(soundSpeedUp, mainVolume);
+        soundManager.PlaySound(soundSpeedUp, volumeCoef);
     }
 
     void playSlowDownSound()
     {
-        soundPlayer.PlayOneShot(soundSlowDown, mainVolume);
+        soundManager.PlaySound(soundSlowDown, volumeCoef);
     }
 
     /*

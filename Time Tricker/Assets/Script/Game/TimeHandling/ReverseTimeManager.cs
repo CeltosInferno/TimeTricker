@@ -2,46 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReverseTimeManager : TimeManager
+/*
+ * Represent a "reversed" behaviour of TimeEntities when 
+ * time is affected, they slow down when time is speeded up
+ * they speed up when it decelerates...
+ */
+public class ReverseTimeManager : BasicTimeManager
 {
-
-    TimeEntity timeEntity;
-    Animator anim;
-
+    //in order to avoid unwanted strong forces
+    //some limits are set to the reaction to the time
+    //(no speed x10) which would break the game
     public float minSlow = 0.05f;
     public float maxSpeed = 3f;
 
-    //the name of the value that defines the speed of the Animator
-    public string animatorTimeName = "timeSpeed";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        timeEntity = GetComponent<TimeEntity>();
-        if (timeEntity == null) Debug.LogError("Could not find a TimeEntity in ReverseTimeManager");
-        anim = GetComponent<Animator>();
-        if (anim == null) Debug.LogError("Could not find an Animator in ReverseTimeManager");
+    protected override void normalReaction(float value) {
+        value = Mathf.Max(Mathf.Min(1f / value, maxSpeed), minSlow);
+        base.normalReaction(value);
     }
-
-    void normalReaction(float value)
-    {
-        if (timeEntity != null) timeEntity.SetTimeScale(value);
-        if (anim != null) anim.SetFloat(animatorTimeName, value);
-    }
-
-    override public void ReactToSpeedUp(float value)
-    {
-        normalReaction(Mathf.Min(1f / value, maxSpeed));
-    }
-    public override void ReactToSlowDown(float value)
-    {
-        normalReaction(Mathf.Max(1f / value, minSlow));
-    }
-    public override void ReactNormalState()
-    {
-        normalReaction(1.0f);
-    }
-
-    public override void _Update()
-    { }
 }

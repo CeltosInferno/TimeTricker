@@ -6,12 +6,15 @@ public class HealthBar : MonoBehaviour
 {
     //the bar which contain the sprite bar
     private Transform bar;
+    //a coefficient mostly used to swap the bar when the enntity is swapped
+    //in order to keep the same direction
+    //public float sizeMultiplier = 1f;
 
     void Start()
     {
         //get the bar
         bar = transform.Find("Bar");
-        Debug.Log(bar);
+        //Debug.Log(bar);
     }
 
     /**
