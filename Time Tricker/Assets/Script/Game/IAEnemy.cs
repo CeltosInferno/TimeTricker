@@ -20,11 +20,13 @@ public class IAEnemy : TimeEntity
     private bool canJump;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
+    //private Enemy enemyStats;
 
     void Start()
     {
         positionPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        //enemyStats = GetComponent<Enemy>();
         canJump = true;
     }
 
@@ -41,16 +43,19 @@ public class IAEnemy : TimeEntity
     private void Move()
     {
         directionMove = positionPlayer.position.x - GetComponent<Transform>().position.x;
+        //float minDist = 0.05f;
         if (directionMove < 0)
         {
-            if (isFacingRight) Flip();
+            //if (isFacingRight && directionMove < -Mathf.Abs(minDist)) 
+            //    Flip();
             //transform.Translate(Vector3.left * speed * m_timeScale * Time.deltaTime);
             TimeTranslate(transform, Vector3.left * speed * Time.deltaTime);
             //rb.AddForce(-transform.right * forceMove, ForceMode2D.Force);
         }
-        else
+        else if (directionMove > 0)
         {
-            if (!isFacingRight) Flip();
+            //if (!isFacingRight && directionMove > Mathf.Abs(minDist)) 
+            //    Flip();
             //transform.Translate(Vector3.right * speed * m_timeScale * Time.deltaTime);
             TimeTranslate(transform, Vector3.right * speed * Time.deltaTime);
             //rb.AddForce(transform.right * forceMove, ForceMode2D.Force);
@@ -85,8 +90,21 @@ public class IAEnemy : TimeEntity
     void Flip()
     {
         isFacingRight = !isFacingRight;
-        Vector3 scale = transform.localScale;
+        /*Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+        //the health bar is inversed in order to keep it in the right way
+        //(ugly code but couldn't find another way)
+        HealthBar bar = enemyStats.healthBar;
+        scale = bar.transform.localScale;
+        if (scale.x > 0)
+        {
+            scale.x *= -1;
+            bar.transform.localScale = scale;
+        }
+        Vector3 pos = bar.transform.position;
+        pos.x *= -1;
+        bar.transform.position = pos;
+        bar.sizeMultiplier *= -1;*/
     }
 }
