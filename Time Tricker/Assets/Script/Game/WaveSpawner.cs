@@ -134,6 +134,9 @@ public class WaveSpawner : MonoBehaviour
         //If countdown is over, we play the new wave music and start the monster spawns
         if (waveCountdown <= 0)
         {
+            //the player is healed at the end of the wave
+            GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
+            
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SoundManagerGlobal>().NewWaveMusic();
             StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));

@@ -48,6 +48,12 @@ public class PlayerHealth : MonoBehaviour
         gameOver = GameObject.FindGameObjectsWithTag("GameManager")[0].GetComponent<GameManager>().gameHasEnded;
     }
 
+    public void RestoreHealth()
+    {
+        health = maxHealth;
+        UpdateHealth(0);
+    }
+
     /**
      * Give dommage to the right bar. Manage health and armor bar
      * <param name="dommage">Amount of dommage taken by player</param>
