@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public float delayShowHealthBar = 2f;
 
     public float dommage;
-    public int scoreOnDeath = 1;
+    public int scoreOnDeath = 100;
 
     public GameObject Hud;
 

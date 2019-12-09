@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour
         //gives a time until the next wave is to be computed
         //if 0f, uses th default value from "timeBetweenWaves" 
         public float timeToHandle = 0f;
-        public int scoreOnFinished = 5;
+        public int scoreOnFinished = 1500;
     }
 
     public Wave[] waves;
@@ -73,6 +73,7 @@ public class WaveSpawner : MonoBehaviour
     private Chrono m_chrono;
     private WaveCounter m_waveCounter;
     private ScoreUpdate su;
+    private bool nextWaveStart = false;
 
     private void Start()
     {
@@ -138,6 +139,7 @@ public class WaveSpawner : MonoBehaviour
             GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
             
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SoundManagerGlobal>().NewWaveMusic();
+            nextWaveStart = false;
             StartCoroutine(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFlashAndShake>().FlashAndShake(1.5f, 2.0f));
             StartCoroutine(SpawnWave(waves[nextWave]));
         }
@@ -145,8 +147,18 @@ public class WaveSpawner : MonoBehaviour
         {        
 
             waveCountdown = Mathf.Max(waveCountdown - Time.deltaTime, 0f);
-            if (m_chrono) { 
-                m_chrono.setTimeText(waveCountdown);
+            
+            if (m_chrono) {
+                if (waveCountdown > timeBetweenWaves && !nextWaveStart && !EnemyIsAlive())
+                {
+                    waveCountdown = timeBetweenWaves;
+                    nextWaveStart = true;
+                }
+                else
+                {
+                    m_chrono.setTimeText(waveCountdown);
+                }
+                
                 //when the chrono is close to 0
                 if (waveCountdown < 5f) m_chrono.AlertMode();
             }
@@ -184,6 +196,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
+            GameObject.FindGameObjectWithTag("Hud").GetComponent<PlayerHealth>().RestoreHealth();
             nextWave++;
         }
     }
@@ -230,7 +243,7 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Enemy spawn ");
         Transform l_swaningPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(p_enemy, l_swaningPoint.position, l_swaningPoint.rotation);
-        //create pawn effect
+        //create spawn effect
         Instantiate(spawnEffect, l_swaningPoint.position, Quaternion.identity);
         //play sound
         GetComponent<SoundManagerSpawner>().PlaySpawn();
