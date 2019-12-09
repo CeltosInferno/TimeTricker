@@ -21,11 +21,9 @@ public abstract class TimeEntity : MonoBehaviour
     }
     public void SetTimeScale(float value)
     {
-        if (value <= 0f)
-            value = 0.000001f;
-        float old_timeScale = m_timeScale;
+        //float old_timeScale = m_timeScale;
         m_timeScale = value;
-        if (m_rb)
+        /*if (m_rb)
         {
             float ratio = m_timeScale / old_timeScale;
             m_rb.velocity *= ratio;
@@ -34,7 +32,7 @@ public abstract class TimeEntity : MonoBehaviour
             m_rb.drag *= ratio;
             m_rb.gravityScale *= ratio;
             m_rb.mass *= ratio;
-        }
+        }*/
     }
 
     public void TimeTranslate(Transform transform, Vector3 value)
@@ -44,7 +42,7 @@ public abstract class TimeEntity : MonoBehaviour
 
     public void TimeAddForce(Rigidbody2D rb, Vector2 force, ForceMode2D mode)
     {
-        rb.AddForce(force * m_timeScale, mode);
+        rb.AddForce(force * Mathf.Sqrt(m_timeScale), mode);
     }
 
 }

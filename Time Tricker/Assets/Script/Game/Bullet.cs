@@ -17,8 +17,7 @@ public class Bullet : TimeEntity
 
     public int bulletDamage = 20;
     // Start is called before the first frame update
-    public override
-        void Start()
+    public override void Start()
     {
         base.Start();
         Invoke("DestroyProjectile", (float)lifetime * m_timeScale);
