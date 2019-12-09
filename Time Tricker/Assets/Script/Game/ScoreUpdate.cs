@@ -36,4 +36,9 @@ public class ScoreUpdate : MonoBehaviour
         yield return new WaitForSeconds(1);
         text.fontSize = System.Math.Max(text.fontSize - delta, minFontSize);
     }
+
+    public void resetScore()
+    {
+        score = 0;
+    }
 }
